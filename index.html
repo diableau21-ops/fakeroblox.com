@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+  <script src="https://cdn.tailwindcss.com"></script>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <style id="role-aware-ad-cloak">
@@ -5843,25 +5844,6 @@
     });
   </script>
 
-  <script>
-    (function () {
-      const risky = /buy robux|buy now|purchase|checkout|send robux|send gift|gift robux|claim robux|free robux|continue to payment|complete purchase/i;
-      document.addEventListener('click', function (event) {
-        const el = event.target.closest('button, a, [role="button"]');
-        if (!el) return;
-        const label = (el.innerText || el.getAttribute('aria-label') || el.title || '').trim();
-        if (risky.test(label)) {
-          event.preventDefault();
-          event.stopImmediatePropagation();
-          alert('This is only a visual demo. Real Robux purchases and gifts are disabled.');
-        }
-      }, true);
-      document.querySelectorAll('input[type="password"], input[name*="password" i]').forEach(function (input) {
-        input.disabled = true;
-        input.placeholder = 'Password entry disabled on this demo';
-      });
-    })();
-  </script>
 </body>
 
 </html>
