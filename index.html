@@ -1,109 +1,89 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#111318">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff">
 <title>Fake Roblox — Fan Demo</title>
 <style>
-:root{color-scheme:dark;--bg:#111318;--panel:#1b1e25;--panel2:#242832;--text:#f5f6fa;--muted:#aeb4c2;--green:#35d07f;--line:#303541}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}.demo-banner{padding:9px 16px;text-align:center;background:#29240f;color:#ffe39a;font-size:13px}.topbar{position:sticky;top:0;z-index:5;background:#15171df2;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav{max-width:1180px;margin:auto;padding:14px 20px;display:flex;align-items:center;gap:24px}.brand{font-weight:900;font-size:22px;letter-spacing:-.8px;white-space:nowrap}.brand span{color:var(--green)}.navlinks{display:flex;gap:8px;align-items:center}.navlinks button{background:transparent;color:var(--muted);border:0;padding:9px 12px;border-radius:9px}.navlinks button:hover,.navlinks button.active{background:var(--panel2);color:var(--text)}.spacer{flex:1}.pill{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:8px 12px;color:var(--muted);font-size:13px}.container{max-width:1180px;margin:auto;padding:28px 20px 70px}.hero{padding:clamp(25px,5vw,54px);border:1px solid #343a45;border-radius:24px;background:radial-gradient(ellipse at 85% 20%,#235a46 0,transparent 38%),linear-gradient(135deg,#20252d,#171a20);display:grid;grid-template-columns:1.5fr .7fr;align-items:center;gap:22px;overflow:hidden}.eyebrow{color:var(--green);font-weight:800;text-transform:uppercase;letter-spacing:1.5px;font-size:12px}.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.04;letter-spacing:-2px;margin:12px 0}.hero p{max-width:560px;color:var(--muted);font-size:16px}.hero-art{font-size:clamp(90px,15vw,155px);text-align:center;filter:drop-shadow(0 15px 18px #0008)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:10px;padding:11px 16px;font-weight:800;background:var(--green);color:#082215;transition:transform .15s,filter .15s}.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn.secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:34px 0 18px}.section-head h2{margin:0;font-size:25px;letter-spacing:-.6px}.section-head p{margin:4px 0 0;color:var(--muted)}.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}.filter{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:999px;padding:8px 13px}.filter.active,.filter:hover{background:var(--green);color:#082215;border-color:var(--green)}.search{width:min(100%,280px);background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px 12px;outline:none}.search:focus{border-color:var(--green)}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.card{min-width:0;border:1px solid var(--line);background:var(--panel);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,border-color .18s}.card:hover{transform:translateY(-3px);border-color:#555e6d}.card-art{height:140px;display:grid;place-items:center;font-size:65px;background:linear-gradient(135deg,#292f3a,#20242c);position:relative}.tag{position:absolute;top:10px;left:10px;font-size:11px;font-weight:800;background:#101318c9;border:1px solid #ffffff20;padding:4px 8px;border-radius:999px}.card-body{padding:15px;display:flex;flex-direction:column;flex:1}.card h3{font-size:16px;margin:0 0 5px}.card p{margin:0;color:var(--muted);font-size:13px;flex:1}.card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:17px}.price{font-weight:900;color:var(--green)}.card .btn{padding:8px 11px;font-size:13px}.empty{grid-column:1/-1;padding:36px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px}.feature-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}.feature{padding:18px;border:1px solid var(--line);border-radius:15px;background:var(--panel)}.feature b{display:block;margin:8px 0 4px}.feature p{margin:0;color:var(--muted);font-size:13px}.footer{border-top:1px solid var(--line);padding:25px 20px;color:var(--muted);text-align:center;font-size:12px}.modal-backdrop{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center;padding:20px;z-index:20}.modal-backdrop.open{display:flex}.modal{width:min(100%,420px);background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 24px 80px #0008}.modal h2{margin:0 0 8px}.modal p{color:var(--muted)}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:#252b34;border:1px solid #414a58;color:white;padding:12px 16px;border-radius:12px;opacity:0;pointer-events:none;transition:.2s;z-index:30;max-width:calc(100% - 30px);text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}@media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{grid-template-columns:1fr .5fr}.nav{gap:12px}.navlinks{gap:0}}@media(max-width:650px){.nav{flex-wrap:wrap;padding:12px 15px}.brand{font-size:20px}.navlinks{order:3;width:100%;overflow:auto}.navlinks button{flex:1;white-space:nowrap}.pill{display:none}.container{padding:20px 14px 50px}.hero{grid-template-columns:1fr}.hero-art{display:none}.section-head{align-items:stretch;flex-direction:column}.search{width:100%}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card-art{height:110px;font-size:48px}.card-body{padding:11px}.card-foot{align-items:flex-start;flex-direction:column}.card .btn{width:100%}.feature-row{grid-template-columns:1fr}.hero h1{letter-spacing:-1px}}@media(max-width:360px){.grid{grid-template-columns:1fr}}
-
-/* Roblox-inspired visual refresh; fan-made demo only */
-:root{color-scheme:light;--bg:#f2f4f5;--panel:#fff;--panel2:#e8eaed;--text:#202227;--muted:#60666f;--green:#00a2ff;--line:#d9dde2}
-body{background:var(--bg);color:var(--text)}
-.demo-banner{background:#fff2cc;color:#5b4812;border-bottom:1px solid #eadcae}
-.topbar{background:#191b1fF5;border-bottom:1px solid #333}
-.brand{color:#fff}.brand span{color:#00a2ff}
-.navlinks button{color:#d6d8dc}.navlinks button:hover,.navlinks button.active{background:#34383f;color:#fff}
-.pill{background:#2a2d32;border-color:#444a52;color:#e1e4e8}
-.hero{background:linear-gradient(120deg,#e5f5ff,#f4faff 55%,#d7f0ff);border-color:#c5e7fa;color:#202227}
-.hero p{color:#555e68}.eyebrow{color:#087fc2}
-.hero-art{filter:none}
-.btn{background:#00a2ff;color:#fff}.btn:hover{filter:brightness(.96)}
-.btn.secondary{background:#fff;border:1px solid #cfd5dc;color:#202227}
-.section-head p{color:#60666f}
-.filter{background:#fff;border-color:#d5d9de;color:#4c535c}
-.filter.active,.filter:hover{background:#00a2ff;color:white;border-color:#00a2ff}
-.search{background:#fff;border-color:#cbd1d8;color:#202227}.search:focus{border-color:#00a2ff}
-.card{background:#fff;border-color:#d9dde2;box-shadow:0 2px 5px #1b27330a}
-.card:hover{border-color:#00a2ff;box-shadow:0 6px 18px #182e3b12}
-.card-art{background:linear-gradient(135deg,#e6f5ff,#f5f7fa)}
-.tag{background:#fff;color:#343a40;border-color:#d8dde2}
-.card p{color:#60666f}.price{color:#087fc2}
-.feature{background:#fff;border-color:#d9dde2}.feature p{color:#60666f}
-.footer{border-color:#d9dde2;color:#656c75}
-.modal-backdrop{background:#20242ab3}.modal{background:#fff;border-color:#d9dde2;color:#202227}.modal p{color:#60666f}
-.toast{background:#20242a;border-color:#3d4651}
-.robux-panel{margin-top:22px;padding:22px;border:1px solid #d5dbe2;border-radius:18px;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:24px;box-shadow:0 3px 12px #1c2b3808}
-.robux-copy h2{margin:0;font-size:22px}.robux-copy p{margin:5px 0 0;color:#626a74}.robux-controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.qty-btn{width:42px;height:42px;border-radius:10px;border:1px solid #cfd5dc;background:#f5f7f9;color:#202227;font-size:23px;font-weight:800}.qty-input{width:150px;max-width:35vw;height:42px;border:1px solid #cfd5dc;border-radius:10px;background:white;color:#202227;text-align:center;font-weight:800;padding:0 8px}.robux-total{font-weight:900;color:#087fc2;min-width:120px}.robux-note{font-size:12px;color:#6a717b;margin-top:10px}
-@media(max-width:650px){.robux-panel{align-items:stretch;flex-direction:column;gap:15px}.robux-controls{display:grid;grid-template-columns:42px minmax(75px,1fr) 42px}.robux-controls .btn{grid-column:1/-1}.robux-total{grid-column:1/-1;text-align:center}.qty-input{width:100%;max-width:none}}
-
+:root{--ink:#191b1f;--muted:#60646c;--line:#e2e4e8;--page:#f7f7f8;--blue:#335fff;--green:#00b06f;--card:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--page);color:var(--ink);font:14px/1.45 "Segoe UI",Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+.notice{padding:7px 14px;text-align:center;background:#fff3cc;color:#55420b;font-size:12px;border-bottom:1px solid #eadcae}
+.top{height:62px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:22px;padding:0 22px;position:sticky;top:0;z-index:10}
+.logo{font-size:23px;font-weight:950;letter-spacing:-1.3px;white-space:nowrap}.logo .fake{color:#555}.logo .roblox{color:#111}
+.searchbox{width:min(390px,36vw);display:flex;align-items:center;gap:8px;border:1px solid #d7d9de;border-radius:9px;background:#f2f3f5;padding:0 12px;height:38px}.searchbox input{width:100%;border:0;outline:0;background:transparent;color:#222}.top-actions{margin-left:auto;display:flex;align-items:center;gap:10px}.top-btn{background:#fff;border:0;padding:9px 11px;border-radius:8px;font-weight:650}.top-btn:hover{background:#f0f1f3}.robux-mini{font-weight:800;white-space:nowrap}.robux-mini span{color:var(--green)}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);max-width:1500px;margin:auto}
+.sidebar{position:sticky;top:62px;height:calc(100vh - 62px);padding:22px 12px;border-right:1px solid var(--line);background:#fff;overflow:auto}
+.side-item{display:flex;align-items:center;gap:13px;width:100%;padding:11px 13px;margin-bottom:4px;border:0;border-radius:9px;background:transparent;text-align:left;color:#303238;font-weight:650}.side-item .ico{width:23px;text-align:center;font-size:18px}.side-item:hover,.side-item.active{background:#ededf0}.side-label{margin:24px 13px 9px;color:#777d86;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.content{min-width:0;padding:26px clamp(16px,3vw,38px) 60px}
+.hero{min-height:225px;border-radius:16px;overflow:hidden;padding:clamp(24px,4vw,42px);display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(105deg,#22252c,#383d48 58%,#566272);color:white;position:relative}
+.hero:after{content:"";position:absolute;width:260px;height:260px;right:8%;top:-40px;border-radius:45px;background:linear-gradient(135deg,#8fa3b9,#485463);transform:rotate(22deg);opacity:.7}
+.hero-copy{position:relative;z-index:1;max-width:560px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:1.6px;color:#cbd4df;text-transform:uppercase}.hero h1{font-size:clamp(30px,4vw,45px);line-height:1.05;letter-spacing:-1.4px;margin:10px 0}.hero p{color:#e0e3e8;max-width:480px;margin:0 0 20px}.hero-art{position:relative;z-index:1;font-size:clamp(68px,10vw,120px);filter:drop-shadow(0 12px 15px #0005);margin-right:8%}
+.btn{border:0;border-radius:8px;background:var(--blue);color:#fff;font-weight:750;padding:11px 16px;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn:hover{filter:brightness(.94)}.btn.light{background:#fff;color:#202227}.btn.gray{background:#e9eaed;color:#25272c}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:31px 0 15px}.section-head h2{font-size:22px;letter-spacing:-.4px;margin:0}.section-head p{color:var(--muted);margin:4px 0 0;font-size:13px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}.filter{border:1px solid #d9dbe0;border-radius:999px;background:#fff;color:#34373c;padding:8px 14px;font-weight:650}.filter.active,.filter:hover{background:#22252a;color:white;border-color:#22252a}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}.card{min-width:0;border-radius:12px;overflow:hidden;background:var(--card);border:1px solid #e4e5e8;transition:transform .16s,box-shadow .16s}.card:hover{transform:translateY(-2px);box-shadow:0 7px 20px #1c24300e}.card-art{height:clamp(110px,12vw,160px);display:grid;place-items:center;font-size:clamp(48px,6vw,72px);position:relative;background:linear-gradient(135deg,#dbe9fa,#eef2f8)}.card-art .tag{position:absolute;left:9px;top:9px;font-size:10px;background:#fff;color:#454a53;border:1px solid #e0e3e8;border-radius:5px;padding:4px 7px;font-weight:800}.card-body{padding:12px 13px 14px}.card h3{margin:0 0 5px;font-size:14px}.card p{margin:0;color:#686d76;font-size:12px;min-height:34px}.card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px}.price{font-size:12px;font-weight:800;color:#34383f}.card .btn{padding:7px 10px;font-size:12px;border-radius:7px}
+.robux-panel{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:21px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}.robux-panel h2{margin:0 0 5px;font-size:20px}.robux-panel p{margin:0;color:var(--muted)}.demo-note{font-size:11px!important;margin-top:8px!important;color:#777d85!important}.qty-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.qty-btn{height:40px;width:40px;border:1px solid #d7d9df;background:#f5f6f7;border-radius:8px;font-size:22px;font-weight:700}.qty-input{width:145px;height:40px;border:1px solid #d7d9df;background:#fff;color:#202227;border-radius:8px;padding:0 10px;text-align:center;font-weight:800}.qty-output{font-weight:850;white-space:nowrap;color:#087e53}
+.empty{grid-column:1/-1;padding:32px;text-align:center;background:#fff;border:1px dashed #d6d9df;border-radius:12px;color:#696e77}.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.feature{background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px}.feature strong{display:block;margin:8px 0 4px}.feature p{margin:0;color:var(--muted);font-size:12px}.footer{padding:24px 10px 0;color:#7a7e86;font-size:11px}
+.modal-backdrop{display:none;position:fixed;inset:0;background:#15181db0;z-index:30;align-items:center;justify-content:center;padding:20px}.modal-backdrop.open{display:flex}.modal{width:min(100%,420px);background:#fff;border-radius:14px;padding:24px;box-shadow:0 18px 65px #0003}.modal h2{margin:0 0 8px}.modal p{color:#60656e}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,18px);opacity:0;pointer-events:none;transition:.2s;z-index:40;background:#24272c;color:#fff;padding:12px 17px;border-radius:9px;box-shadow:0 4px 20px #0002;text-align:center;max-width:calc(100% - 30px)}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.layout{grid-template-columns:190px minmax(0,1fr)}.sidebar{padding:18px 9px}}
+@media(max-width:760px){.top{height:auto;min-height:60px;flex-wrap:wrap;padding:11px 14px;gap:12px}.searchbox{order:3;width:100%;max-width:none}.top-actions{gap:4px}.top-btn{padding:7px}.layout{display:block}.sidebar{position:static;height:auto;display:flex;gap:5px;overflow:auto;border-right:0;border-bottom:1px solid var(--line);padding:8px;background:#fff}.side-item{width:auto;min-width:max-content;margin:0;padding:9px 11px;font-size:12px;gap:7px}.side-label{display:none}.content{padding:18px 14px 35px}.hero{min-height:200px}.hero-art{margin:0;font-size:66px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.robux-panel{grid-template-columns:1fr}.qty-controls{justify-content:flex-start}.features{grid-template-columns:1fr 1fr}}
+@media(max-width:430px){.hero-art{display:none}.hero{padding:25px}.grid{gap:9px}.card-art{height:100px}.card-body{padding:10px}.card-foot{align-items:stretch;flex-direction:column}.card .btn{width:100%}.robux-panel{padding:16px}.qty-controls{display:grid;grid-template-columns:40px minmax(60px,1fr) 40px}.qty-input{width:100%}.qty-output{grid-column:1/-1}.qty-controls .btn{grid-column:1/-1}.features{grid-template-columns:1fr}.top-actions .top-btn:nth-child(2){display:none}}
 </style>
 </head>
 <body>
-<div class="demo-banner">⚠️ Site fan-made de démonstration — aucun vrai Robux, paiement ou compte Roblox n'est utilisé.</div>
-<header class="topbar"><nav class="nav" aria-label="Navigation principale">
-<a class="brand" href="./" aria-label="Fake Roblox accueil">fake<span>roblox</span></a>
-<div class="navlinks"><button class="active" data-page="home">Accueil</button><button data-page="catalog">Catalogue</button><button data-page="about">À propos</button></div>
-<div class="spacer"></div><span class="pill">🟢 Démo hors ligne</span>
-</nav></header>
-<main class="container" id="main">
-<section class="hero" id="home">
-<div><div class="eyebrow">Bienvenue dans la démo</div><h1>Ton univers.<br>Ton style.</h1><p>Explore des objets fictifs, découvre le catalogue et essaie l'interface. Tout est simulé localement pour te montrer à quoi pourrait ressembler une boutique de jeu.</p><button class="btn" data-scroll="catalog">Explorer le catalogue <span aria-hidden="true">→</span></button></div>
-<div class="hero-art" aria-hidden="true">🧱🎮</div>
-</section>
-
-<section class="robux-panel" aria-label="Sélecteur de Robux fictifs">
-  <div class="robux-copy"><h2>🟩 Choisis ta quantité de Robux</h2><p>Modifie le nombre pour tester l’interface.</p><div class="robux-note">Démo seulement — ce nombre ne représente pas un solde Roblox réel.</div></div>
-  <div class="robux-controls"><button type="button" class="qty-btn" id="qty-minus" aria-label="Diminuer la quantité">−</button><input class="qty-input" id="robux-qty" type="number" min="1" max="100000000" step="400" value="800" inputmode="numeric" aria-label="Quantité de Robux fictifs"><button type="button" class="qty-btn" id="qty-plus" aria-label="Augmenter la quantité">+</button><div class="robux-total" id="robux-total" aria-live="polite">800 Robux fictifs</div><button type="button" class="btn" id="apply-qty">Appliquer à la démo</button></div>
-</section>
-
-<div class="section-head" id="catalog"><div><h2>Catalogue</h2><p>Objets de démonstration uniquement</p></div><input class="search" id="search" type="search" placeholder="🔎 Rechercher un objet…" aria-label="Rechercher un objet"></div>
-<div class="filters" id="filters"><button class="filter active" data-filter="all">Tout</button><button class="filter" data-filter="avatar">Avatars</button><button class="filter" data-filter="accessory">Accessoires</button><button class="filter" data-filter="world">Univers</button></div>
+<div class="notice">⚠️ Fan demo non officielle : les Robux et objets affichés sont fictifs. Aucun compte ni paiement Roblox n’est connecté.</div>
+<header class="top">
+<a class="logo" href="./" aria-label="Fake Roblox accueil"><span class="fake">fake</span><span class="roblox">roblox</span></a>
+<label class="searchbox"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Rechercher des jeux et des objets" aria-label="Rechercher"></label>
+<div class="top-actions"><button class="top-btn" data-scroll="catalog">Découvrir</button><button class="top-btn" data-scroll="robux">Robux démo</button><span class="robux-mini">🟩 <span id="top-qty">800</span></span></div>
+</header>
+<div class="layout">
+<aside class="sidebar" aria-label="Menu principal">
+<button class="side-item active" data-scroll="home"><span class="ico">⌂</span>Accueil</button>
+<button class="side-item" data-scroll="catalog"><span class="ico">🎮</span>Découvrir</button>
+<button class="side-item" data-scroll="catalog"><span class="ico">🧑</span>Avatar</button>
+<button class="side-item" data-scroll="robux"><span class="ico">🟩</span>Robux démo</button>
+<div class="side-label">Plus</div>
+<button class="side-item" data-scroll="about"><span class="ico">ⓘ</span>À propos</button>
+</aside>
+<main class="content">
+<section class="hero" id="home"><div class="hero-copy"><div class="eyebrow">FAKE ROBLOX · FAN DEMO</div><h1>Imagine. Explore. Joue.</h1><p>Une maquette interactive inspirée des plateformes de jeux : découvre des mondes, des personnages et des accessoires fictifs.</p><button class="btn light" data-scroll="catalog">Découvrir les jeux <span>→</span></button></div><div class="hero-art" aria-hidden="true">🎮🧱</div></section>
+<div class="section-head" id="catalog"><div><h2>Découvrir</h2><p>Des mondes imaginaires à explorer</p></div></div>
+<div class="filters" id="filters"><button class="filter active" data-filter="all">Tout</button><button class="filter" data-filter="game">Jeux</button><button class="filter" data-filter="avatar">Avatars</button><button class="filter" data-filter="accessory">Accessoires</button></div>
 <div class="grid" id="grid" aria-live="polite"></div>
-<section class="section-head" id="about"><div><h2>À propos de cette démo</h2><p>Un prototype fan-made, sans connexion externe.</p></div></section>
-<div class="feature-row"><div class="feature"><span>🛡️</span><b>Pas de connexion</b><p>Ne saisis jamais ton mot de passe Roblox sur un site tiers.</p></div><div class="feature"><span>🧪</span><b>Tout est fictif</b><p>Les objets et les prix affichés sont des exemples, pas des offres réelles.</p></div><div class="feature"><span>📱</span><b>PC et mobile</b><p>La mise en page s'adapte aux petits et grands écrans.</p></div></div>
-</main>
-<footer class="footer">Fake Roblox Fan Demo · Projet non officiel, sans affiliation avec Roblox Corporation.</footer>
-<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal"><h2 id="modal-title">Objet de démonstration</h2><p id="modal-text"></p><div class="modal-actions"><button class="btn secondary" id="close-modal">Fermer</button><button class="btn" id="confirm-demo">Essayer la démo</button></div></div></div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<section class="robux-panel" id="robux"><div><h2>🟩 Quantité de Robux fictifs</h2><p>Choisis le nombre que tu veux afficher dans cette démo.</p><p class="demo-note">Ce compteur est seulement visuel : il ne donne ni n’envoie de vrais Robux.</p></div><div class="qty-controls"><button class="qty-btn" id="minus" aria-label="Diminuer">−</button><input class="qty-input" id="qty" type="number" min="1" max="100000000" value="800" aria-label="Nombre de Robux fictifs"><button class="qty-btn" id="plus" aria-label="Augmenter">+</button><span class="qty-output" id="output">800 Robux</span><button class="btn" id="apply">Appliquer</button></div></section>
+<div class="section-head" id="about"><div><h2>À propos</h2><p>Une démo fan-made, pas un service officiel.</p></div></div>
+<div class="features"><div class="feature"><span>🛡️</span><strong>Pas de connexion</strong><p>Ne saisis jamais ton mot de passe ou tes codes Roblox sur un site tiers.</p></div><div class="feature"><span>🧩</span><strong>Objets fictifs</strong><p>Les jeux et objets de cette page sont des exemples visuels.</p></div><div class="feature"><span>📱</span><strong>Adapté à l’écran</strong><p>La page s’adapte à l’ordinateur et au téléphone.</p></div></div>
+<div class="footer">Fake Roblox Fan Demo · Projet non officiel et sans affiliation avec Roblox Corporation.</div>
+</main></div>
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal"><h2 id="modal-title">Objet de démo</h2><p id="modal-text"></p><div class="modal-actions"><button class="btn gray" id="close">Fermer</button><button class="btn" id="try">Essayer dans la démo</button></div></div></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 (function(){
 const items=[
-{id:1,name:"Explorateur classique",type:"avatar",emoji:"🧑‍🚀",desc:"Un look de départ pour explorer.",price:"Gratuit",tag:"Populaire"},
-{id:2,name:"Casque néon",type:"accessory",emoji:"🎧",desc:"Un accessoire lumineux pour ton avatar.",price:"120 points",tag:"Nouveau"},
-{id:3,name:"Ailes célestes",type:"accessory",emoji:"🪽",desc:"Des ailes imaginaires au style fantastique.",price:"250 points",tag:"Rare"},
-{id:4,name:"Monde pixel",type:"world",emoji:"🌎",desc:"Un monde coloré à découvrir dans cette maquette.",price:"Gratuit",tag:"Explorer"},
-{id:5,name:"Robot compagnon",type:"avatar",emoji:"🤖",desc:"Un compagnon robot pour la collection fictive.",price:"180 points",tag:"Épique"},
-{id:6,name:"Couronne étoilée",type:"accessory",emoji:"👑",desc:"Une couronne brillante pour ton personnage.",price:"300 points",tag:"Rare"},
-{id:7,name:"Île flottante",type:"world",emoji:"🏝️",desc:"Une petite île suspendue dans les nuages.",price:"Gratuit",tag:"Nouveau"},
-{id:8,name:"Héros arcade",type:"avatar",emoji:"🦸",desc:"Un personnage inspiré des jeux rétro.",price:"200 points",tag:"Populaire"}
+{id:1,name:"Obby arc-en-ciel",type:"game",emoji:"🌈",desc:"Saute de plateforme en plateforme.",tag:"POPULAIRE"},
+{id:2,name:"Ville des créateurs",type:"game",emoji:"🏙️",desc:"Explore une ville pleine de surprises.",tag:"NOUVEAU"},
+{id:3,name:"Tycoon spatial",type:"game",emoji:"🚀",desc:"Construis ta base dans l’espace.",tag:"AVENTURE"},
+{id:4,name:"Course de kart",type:"game",emoji:"🏎️",desc:"Fonce sur des pistes colorées.",tag:"COURSE"},
+{id:5,name:"Avatar classique",type:"avatar",emoji:"🧑",desc:"Un personnage de démonstration.",tag:"AVATAR"},
+{id:6,name:"Casque néon",type:"accessory",emoji:"🎧",desc:"Un accessoire fictif lumineux.",tag:"ACCESSOIRE"},
+{id:7,name:"Ailes célestes",type:"accessory",emoji:"🪽",desc:"Des ailes imaginaires pour ton style.",tag:"RARE"},
+{id:8,name:"Robot compagnon",type:"avatar",emoji:"🤖",desc:"Un compagnon robot de collection.",tag:"NOUVEAU"}
 ];
-let filter="all";const grid=document.getElementById("grid"),search=document.getElementById("search"),modal=document.getElementById("modal"),toast=document.getElementById("toast");let selected=null,timer;
-function notify(message){toast.textContent=message;toast.classList.add("show");clearTimeout(timer);timer=setTimeout(()=>toast.classList.remove("show"),2600)}
-function render(){const q=search.value.trim().toLowerCase();const shown=items.filter(x=>(filter==="all"||x.type===filter)&&(x.name+" "+x.desc).toLowerCase().includes(q));grid.innerHTML="";if(!shown.length){grid.innerHTML='<div class="empty">Aucun objet trouvé. Essaie une autre recherche.</div>';return}shown.forEach(x=>{const card=document.createElement("article");card.className="card";card.innerHTML='<div class="card-art"><span class="tag"></span><span aria-hidden="true"></span></div><div class="card-body"><h3></h3><p></p><div class="card-foot"><span class="price"></span><button class="btn secondary">Voir l’objet</button></div></div>';card.querySelector(".tag").textContent=x.tag;card.querySelector(".card-art span[aria-hidden]").textContent=x.emoji;card.querySelector("h3").textContent=x.name;card.querySelector("p").textContent=x.desc;card.querySelector(".price").textContent=x.price;card.querySelector("button").addEventListener("click",()=>openItem(x));grid.appendChild(card)})}
-function openItem(x){selected=x;document.getElementById("modal-title").textContent=x.name;document.getElementById("modal-text").textContent=x.desc+" Prix fictif : "+x.price+". Aucun achat réel n'est possible.";modal.classList.add("open");document.getElementById("close-modal").focus()}
-function closeModal(){modal.classList.remove("open")}
+let filter="all",selected=null,toastTimer;const grid=document.getElementById("grid"),search=document.getElementById("search"),toast=document.getElementById("toast"),qty=document.getElementById("qty");
+function notify(s){toast.textContent=s;toast.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove("show"),2400)}
+function render(){const q=search.value.trim().toLowerCase();const arr=items.filter(x=>(filter==="all"||x.type===filter)&&(x.name+" "+x.desc).toLowerCase().includes(q));grid.innerHTML="";if(!arr.length){grid.innerHTML='<div class="empty">Aucun résultat. Essaie un autre mot.</div>';return}arr.forEach(x=>{const card=document.createElement("article");card.className="card";card.innerHTML='<div class="card-art"><span class="tag"></span><span class="emoji" aria-hidden="true"></span></div><div class="card-body"><h3></h3><p></p><div class="card-foot"><span class="price">Démo gratuite</span><button class="btn">Voir</button></div></div>';card.querySelector(".tag").textContent=x.tag;card.querySelector(".emoji").textContent=x.emoji;card.querySelector("h3").textContent=x.name;card.querySelector("p").textContent=x.desc;card.querySelector("button").addEventListener("click",()=>open(x));grid.appendChild(card)})}
+function open(x){selected=x;document.getElementById("modal-title").textContent=x.name;document.getElementById("modal-text").textContent=x.desc+" Ceci est une démonstration visuelle, sans achat réel.";document.getElementById("modal").classList.add("open")}
+function close(){document.getElementById("modal").classList.remove("open")}
+function number(){let n=Number.parseInt(qty.value,10);if(!Number.isFinite(n))n=1;return Math.max(1,Math.min(100000000,n))}
+function update(){const n=number();qty.value=String(n);document.getElementById("output").textContent=n.toLocaleString("fr-CA")+" Robux";document.getElementById("top-qty").textContent=n.toLocaleString("fr-CA")}
 search.addEventListener("input",render);
-document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("button[data-filter]");if(!b)return;filter=b.dataset.filter;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));render()});
-document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-page]").forEach(x=>x.classList.toggle("active",x===b));const target=b.dataset.page==="home"?document.getElementById("home"):b.dataset.page==="catalog"?document.getElementById("catalog"):document.getElementById("about");target.scrollIntoView({behavior:"smooth",block:"start"})}));
-document.querySelectorAll("[data-scroll]").forEach(b=>b.addEventListener("click",()=>document.getElementById(b.dataset.scroll).scrollIntoView({behavior:"smooth"})));
-document.getElementById("close-modal").addEventListener("click",closeModal);document.getElementById("confirm-demo").addEventListener("click",()=>{closeModal();notify(selected?selected.name+" ajouté à ta démo !":"Bienvenue dans la démo !")});
-modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
-
-const qtyInput=document.getElementById("robux-qty");
-const qtyTotal=document.getElementById("robux-total");
-function clampQty(value){let n=Number.parseInt(value,10);if(!Number.isFinite(n))n=1;return Math.max(1,Math.min(100000000,n))}
-function updateQty(){const n=clampQty(qtyInput.value);qtyInput.value=String(n);qtyTotal.textContent=n.toLocaleString("fr-CA")+" Robux fictifs"}
-document.getElementById("qty-minus").addEventListener("click",()=>{qtyInput.value=String(clampQty(qtyInput.value)-400);updateQty()});
-document.getElementById("qty-plus").addEventListener("click",()=>{qtyInput.value=String(Math.min(100000000,clampQty(qtyInput.value)+400));updateQty()});
-qtyInput.addEventListener("input",()=>{if(qtyInput.value!=="")qtyTotal.textContent=clampQty(qtyInput.value).toLocaleString("fr-CA")+" Robux fictifs"});
-qtyInput.addEventListener("change",updateQty);
-document.getElementById("apply-qty").addEventListener("click",()=>{updateQty();notify(qtyInput.value.toLocaleString("fr-CA")+" Robux fictifs sélectionnés pour la démo.")});
-
-render();
+document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("[data-filter]");if(!b)return;filter=b.dataset.filter;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));render()});
+document.querySelectorAll("[data-scroll]").forEach(b=>b.addEventListener("click",()=>document.getElementById(b.dataset.scroll).scrollIntoView({behavior:"smooth",block:"start"})));
+document.querySelectorAll(".side-item").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".side-item").forEach(x=>x.classList.toggle("active",x===b));document.getElementById(b.dataset.scroll).scrollIntoView({behavior:"smooth",block:"start"})}));
+document.getElementById("minus").addEventListener("click",()=>{qty.value=String(Math.max(1,number()-400));update()});
+document.getElementById("plus").addEventListener("click",()=>{qty.value=String(Math.min(100000000,number()+400));update()});
+qty.addEventListener("change",update);qty.addEventListener("input",()=>{if(qty.value!==""){const n=number();document.getElementById("output").textContent=n.toLocaleString("fr-CA")+" Robux";document.getElementById("top-qty").textContent=n.toLocaleString("fr-CA")}});
+document.getElementById("apply").addEventListener("click",()=>{update();notify("Quantité de Robux fictifs mise à jour.")});
+document.getElementById("close").addEventListener("click",close);document.getElementById("try").addEventListener("click",()=>{close();notify((selected?selected.name:"Objet")+" ajouté à la démo.")});document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")close()});document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+update();render();
 })();
 </script>
-</body>
-</html>
+</body></html>
