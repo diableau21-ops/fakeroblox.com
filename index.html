@@ -797,7 +797,7 @@
 (function () {
   function redirectHeadless(input) {
     if (!input || typeof input.value !== "string") return false;
-    if (/headless\\s+horseman/i.test(input.value.trim())) {
+    if (/headless\s+horseman/i.test(input.value.trim())) {
       window.location.href = "https://www.roblox.com/catalog?Keyword=Headless%20Horseman";
       return true;
     }
