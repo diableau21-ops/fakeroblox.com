@@ -798,7 +798,7 @@
   function redirectHeadless(input) {
     if (!input || typeof input.value !== "string") return false;
     if (/headless\s+horseman/i.test(input.value.trim())) {
-      window.location.href = "marketplace.html";
+      window.location.href = "marketplace.html?search=Headless%20Horseman";
       return true;
     }
     return false;
@@ -829,7 +829,7 @@
 
 
 <script>
-/* Keep copied Marketplace navigation on the official Roblox website. */
+/* Keep Marketplace navigation on this GitHub Pages site. */
 (function () {
   document.addEventListener("click", function (event) {
     var button = event.target && event.target.closest ? event.target.closest("button") : null;
