@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Marketplace | Avatar Shop</title>
+<style>
+:root{color-scheme:dark;--bg:#171717;--panel:#232323;--line:#383838;--text:#f7f7f7;--muted:#bdbdbd;--green:#00a2ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px Arial,Helvetica,sans-serif}
+header{height:64px;background:#111;display:flex;align-items:center;gap:22px;padding:0 max(20px,calc((100% - 1180px)/2));border-bottom:1px solid #303030;position:sticky;top:0;z-index:2}
+.brand{font-weight:800;font-size:20px;color:#fff;text-decoration:none;white-space:nowrap}
+nav{display:flex;align-items:center;gap:20px;flex:1}nav a{color:#ddd;text-decoration:none;font-weight:600}nav a:hover{color:#fff}
+.search{display:flex;gap:8px;max-width:360px;width:100%}.search input{min-width:0;flex:1;background:#292929;border:1px solid #444;color:white;border-radius:7px;padding:10px 12px;font-size:15px}.search button{border:0;border-radius:7px;background:#393939;color:white;padding:0 14px;cursor:pointer}
+main{max-width:1180px;margin:30px auto;padding:0 20px}.heading{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:22px}h1{font-size:30px;margin:0 0 8px}.sub{color:var(--muted);margin:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:transform .15s,border-color .15s}.card:hover{transform:translateY(-3px);border-color:#666}
+.art{height:250px;background:#2d2d2d;display:flex;align-items:center;justify-content:center;padding:16px}.art img{width:100%;height:100%;object-fit:contain}.placeholder{color:#bbb;text-align:center;padding:18px}
+.info{padding:16px}.info h2{font-size:18px;margin:0 0 8px}.creator{color:var(--muted);font-size:13px;margin-bottom:14px}.price{font-weight:700;margin-bottom:14px}.robux{display:inline-flex;align-items:center;gap:6px}.coin{display:inline-block;width:13px;height:13px;border-radius:50%;background:#00b7a4;border:2px solid #7ce8df}
+.actions{display:flex;gap:8px}.actions a{flex:1;text-align:center;text-decoration:none;border-radius:7px;padding:10px 8px;font-weight:700;font-size:14px}.details{background:#393939;color:white}.official{background:#fff;color:#111}.note{color:#aaa;font-size:12px;line-height:1.5;margin-top:22px}
+@media(max-width:720px){header{height:auto;flex-wrap:wrap;padding:14px 16px;gap:12px}nav{order:3;width:100%;gap:16px}.search{max-width:none}main{margin:22px auto;padding:0 14px}.heading{align-items:start;flex-direction:column}.art{height:220px}}
+</style>
+</head>
+<body>
+<header>
+<a class="brand" href="index.html">Marketplace</a>
+<nav aria-label="Navigation principale">
+<a href="marketplace.html">Marketplace</a>
+<a href="marketplace.html">Accessoires</a>
+<a href="marketplace.html">Bundles</a>
+</nav>
+<form class="search" id="searchForm">
+<input id="searchInput" type="search" placeholder="Rechercher Korblox ou Headless..." aria-label="Rechercher un objet">
+<button type="submit">Rechercher</button>
+</form>
+</header>
+<main>
+<div class="heading"><div><h1>Marketplace</h1><p class="sub">Découvre les bundles populaires de Roblox.</p></div></div>
+<section class="grid" id="items" aria-live="polite">
+<article class="card" data-name="korblox deathspeaker">
+<div class="art"><div class="placeholder">Chargement de l’image…</div></div>
+<div class="info"><h2>Korblox Deathspeaker</h2><div class="creator">Par Roblox</div><div class="price"><span class="robux"><span class="coin"></span>17 000 Robux</span></div><div class="actions"><a class="details" href="https://www.roblox.com/bundles/192/Korblox-Deathspeaker">Détails</a><a class="official" href="https://www.roblox.com/bundles/192/Korblox-Deathspeaker" target="_blank" rel="noopener">Voir sur Roblox</a></div></div>
+</article>
+<article class="card" data-name="headless horseman headless">
+<div class="art"><div class="placeholder">Chargement de l’image…</div></div>
+<div class="info"><h2>Headless Horseman</h2><div class="creator">Par Roblox</div><div class="price"><span class="robux"><span class="coin"></span>31 000 Robux</span></div><div class="actions"><a class="details" href="https://www.roblox.com/bundles/201/Headless-Horseman">Détails</a><a class="official" href="https://www.roblox.com/bundles/201/Headless-Horseman" target="_blank" rel="noopener">Voir sur Roblox</a></div></div>
+</article>
+</section>
+<p class="note">Les prix affichés sont indicatifs et peuvent changer sur Roblox. Les boutons « Voir sur Roblox » ouvrent le site officiel pour les détails et les achats.</p>
+</main>
+<script>
+(function(){
+  var cards = Array.from(document.querySelectorAll('.card'));
+  // Roblox's public thumbnail endpoint returns the current bundle image URLs.
+  fetch('https://thumbnails.roblox.com/v1/bundles/thumbnails?bundleIds=192,201&size=420x420&format=Png&isCircular=false')
+    .then(function(response){if(!response.ok)throw new Error('thumbnail');return response.json();})
+    .then(function(result){
+      (result.data||[]).forEach(function(item){
+        var card = item.targetId===192 ? cards[0] : item.targetId===201 ? cards[1] : null;
+        if(card && item.imageUrl){
+          var art=card.querySelector('.art'); art.textContent='';
+          var img=document.createElement('img'); img.src=item.imageUrl; img.alt=card.querySelector('h2').textContent; img.loading='lazy';
+          img.onerror=function(){art.innerHTML='<div class="placeholder">Image indisponible<br>Ouvre la fiche Roblox pour voir l’aperçu.</div>';};
+          art.appendChild(img);
+        }
+      });
+    }).catch(function(){
+      document.querySelectorAll('.art').forEach(function(art){art.innerHTML='<div class="placeholder">Aperçu indisponible ici.<br>Le lien officiel permet de voir l’image.</div>';});
+    });
+  document.getElementById('searchForm').addEventListener('submit',function(event){
+    event.preventDefault();
+    var query=document.getElementById('searchInput').value.trim().toLowerCase();
+    cards.forEach(function(card){card.hidden=!!query && !card.dataset.name.includes(query);});
+  });
+})();
+</script>
+</body>
+</html>
