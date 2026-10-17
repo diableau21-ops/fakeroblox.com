@@ -3,21 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page indisponible</title>
+  <meta name="theme-color" content="#f4f6fb">
+  <title>Informations de sécurité — Fan Demo</title>
   <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; font-family: system-ui, sans-serif; background: #f4f6fb; color: #202431; }
-    main { width: min(100%, 520px); padding: 32px; border-radius: 18px; background: white; box-shadow: 0 12px 40px #17213b14; text-align: center; }
-    h1 { margin: 0 0 12px; font-size: clamp(1.5rem, 5vw, 2rem); }
-    p { line-height: 1.6; color: #555d70; }
-    .notice { margin-top: 20px; padding: 14px; border-radius: 12px; background: #fff4db; color: #704c00; }
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#f4f6fb;color:#202431}
+    main{width:min(100%,560px);padding:clamp(24px,5vw,38px);border-radius:20px;background:white;box-shadow:0 12px 40px #17213b12}
+    .icon{font-size:2rem}h1{margin:12px 0;font-size:clamp(1.6rem,5vw,2.1rem);letter-spacing:-.04em}p{line-height:1.7;color:#555d70}
+    .notice{margin:22px 0;padding:15px;border-radius:12px;background:#fff4db;color:#704c00;line-height:1.6}
+    a{display:inline-block;margin-top:8px;padding:11px 16px;border-radius:10px;background:#202431;color:white;text-decoration:none;font-weight:700}
   </style>
 </head>
 <body>
   <main>
-    <h1>Page temporairement indisponible</h1>
-    <p>Cette page n’est pas disponible pour le moment. Réessaie plus tard.</p>
-    <p class="notice"><strong>Conseil de sécurité :</strong> ne saisis pas ton mot de passe Roblox ni des informations personnelles sur un site non officiel.</p>
+    <div class="icon" aria-hidden="true">🛡️</div>
+    <h1>Informations de sécurité</h1>
+    <p>Ce site est une démonstration non officielle faite par des fans. Il n’est pas exploité ni approuvé par Roblox Corporation.</p>
+    <div class="notice"><strong>Reste prudent :</strong> n’entre jamais ton mot de passe Roblox, tes codes de vérification ou tes informations personnelles sur un site tiers. Cette démo ne demande aucune de ces informations.</div>
+    <p>La page principale est disponible sans clé d’accès.</p>
+    <a href="./index.html">Retour à la page d’accueil</a>
   </main>
 </body>
 </html>
