@@ -1,58 +1,176 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#ffffff">
-<title>Marketplace — Démo d’objets</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#fff">
+<title>Marketplace — maquette non officielle</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f7f7f8;color:#232527;font-family:Arial,Helvetica,sans-serif;font-size:14px}
-.topbar{height:58px;display:flex;align-items:center;gap:27px;padding:0 24px;background:#fff;border-bottom:1px solid #e3e3e5;position:sticky;top:0;z-index:4}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#191b1d;font-size:24px;font-weight:900;letter-spacing:-1.6px;white-space:nowrap}.logo-mark{width:23px;height:23px;border:6px solid #191b1d;transform:rotate(12deg);display:inline-block}
-.nav{display:flex;align-items:center;gap:25px;font-weight:700;white-space:nowrap}.nav a{color:#252729;text-decoration:none;font-size:15px}.nav a:hover{text-decoration:underline}.nav a.current{color:#111;border-bottom:3px solid #191b1d;padding:19px 0 16px}
-.search-wrap{margin-left:auto;max-width:400px;width:100%;position:relative}.search{height:38px;width:100%;border:1px solid #c8cacc;border-radius:7px;background:#f7f7f8;padding:0 13px 0 37px;font-size:14px;outline:none}.search:focus{border-color:#777}.magnify{position:absolute;left:13px;top:10px;color:#5a5d60;font-size:17px}
-.page{max-width:1440px;margin:auto;padding:28px 28px 55px}.title-row{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:23px}.title-row h1{font-size:29px;letter-spacing:-.6px;margin:0;font-weight:750}.demo-label{font-size:11px;font-weight:700;color:#666;background:#ededee;border-radius:5px;padding:7px 9px}
-.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px}.sidebar{border-right:1px solid #e2e3e4;padding-right:21px}.side-title{font-size:16px;font-weight:750;margin:0 0 17px}.side-link{display:block;color:#343638;padding:10px 11px;border-radius:7px;margin:2px 0;text-decoration:none;font-weight:600}.side-link.active{background:#e7e7e9;font-weight:800}.side-link:hover{background:#ededee}.filter-title{font-size:14px;font-weight:750;margin:25px 0 10px}.filter-line{display:flex;align-items:center;gap:9px;padding:8px 0;color:#44484b;font-size:13px}.filter-line input{accent-color:#27292b;width:15px;height:15px}
-.results-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:17px}.results-head strong{font-size:15px}.sort{border:1px solid #c9cbcd;background:white;border-radius:7px;padding:10px 12px;font-size:13px;color:#252729}
-.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}.chip{background:#fff;border:1px solid #d1d3d5;border-radius:7px;padding:9px 13px;font-size:13px;font-weight:650;color:#303336}.chip.active{background:#2b2d30;border-color:#2b2d30;color:#fff}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.card{min-width:0;background:#fff;border:1px solid #e1e2e3;border-radius:9px;overflow:hidden;transition:box-shadow .15s}.card:hover{box-shadow:0 4px 16px #00000012}.thumb{height:220px;background:#f0f1f2;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}.thumb img{height:100%;width:100%;object-fit:contain;padding:8px}.fallback{font-size:68px}.thumb-tag{position:absolute;top:10px;left:10px;background:#fff;border:1px solid #e0e0e0;border-radius:5px;padding:5px 7px;font-size:10px;font-weight:800;color:#45484a}.card-info{padding:14px 14px 15px}.item-name{font-size:15px;font-weight:750;margin:0 0 6px;line-height:1.35}.creator{font-size:12px;color:#777d81;margin-bottom:13px}.price{font-size:14px;font-weight:750;margin-bottom:13px}.robux{display:inline-flex;align-items:center;justify-content:center;background:#00a84f;color:#fff;border-radius:50%;width:16px;height:16px;font-size:10px;margin-right:5px}.gift{display:block;width:100%;border:0;border-radius:6px;background:#00a84f;color:#fff;font-weight:800;font-size:13px;padding:11px;cursor:pointer}.gift:hover{background:#008e43}.gift:focus-visible,.close:focus-visible{outline:3px solid #222;outline-offset:3px}
-.disclaimer{font-size:11px;color:#74797c;text-align:center;margin-top:26px}.overlay{display:none;position:fixed;inset:0;background:#0008;z-index:10;align-items:center;justify-content:center;padding:18px}.overlay.show{display:flex}.modal{background:#fff;border-radius:12px;max-width:410px;width:100%;padding:25px;box-shadow:0 18px 60px #0003;position:relative}.modal h2{margin:0 35px 9px 0;font-size:22px}.modal p{color:#555e63;line-height:1.55}.close{position:absolute;right:13px;top:11px;border:0;background:#f0f1f2;border-radius:50%;width:32px;height:32px;font-size:20px;cursor:pointer}.ok{background:#272a2d;color:#fff;border:0;border-radius:7px;padding:11px 16px;font-weight:700;cursor:pointer;width:100%;margin-top:7px}
-@media(max-width:1000px){.nav{gap:14px}.nav a:nth-child(n+3){display:none}.layout{grid-template-columns:185px minmax(0,1fr);gap:20px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.thumb{height:200px}}
-@media(max-width:650px){.topbar{height:auto;min-height:60px;padding:12px 14px;gap:15px;flex-wrap:wrap}.nav{display:none}.search-wrap{order:3;flex-basis:100%;max-width:none}.page{padding:21px 14px 40px}.layout{display:block}.sidebar{display:none}.title-row h1{font-size:25px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.thumb{height:155px}.card-info{padding:10px}.item-name{font-size:13px}.creator{font-size:11px}.price{font-size:12px}.gift{padding:10px 6px}.thumb-tag{font-size:9px;left:6px;top:6px}.results-head{align-items:flex-start}.sort{max-width:150px}.fallback{font-size:52px}}
-</style></head>
+:root{--ink:#191b1d;--muted:#60666b;--line:#d7d9dc;--soft:#f2f4f5;--green:#00a650;--white:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font:14px/1.4 Arial,Helvetica,sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.topbar{height:64px;position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:28px;padding:0 26px;background:#fff;border-bottom:1px solid #dfe1e3}
+.logo{display:flex;align-items:center;gap:9px;color:#191b1d;text-decoration:none;font-size:25px;font-weight:900;letter-spacing:-1.4px;white-space:nowrap}
+.logo-mark{width:24px;height:24px;border:6px solid #191b1d;transform:rotate(12deg);display:inline-block}
+.nav{display:flex;align-items:stretch;align-self:stretch;gap:26px;white-space:nowrap}
+.nav a{display:flex;align-items:center;color:#34383b;text-decoration:none;font-weight:700;font-size:15px;border-bottom:3px solid transparent;padding-top:3px}
+.nav a:hover{color:#111}.nav a.current{color:#111;border-bottom-color:#191b1d}
+.search-wrap{margin-left:auto;position:relative;width:min(390px,34vw)}
+.search-icon{position:absolute;left:13px;top:9px;color:#62676b;font-size:19px;pointer-events:none}
+.search{width:100%;height:39px;border:1px solid #c7cbd0;border-radius:8px;background:#f7f7f8;padding:0 13px 0 39px;outline:none}
+.search:focus{border-color:#777;box-shadow:0 0 0 1px #777}
+.demo-banner{background:#fff8df;border-bottom:1px solid #eee2b5;color:#57491d;text-align:center;padding:7px 14px;font-size:12px}
+.page{max-width:1500px;margin:auto;padding:25px 28px 44px}
+.heading{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px}
+h1{font-size:30px;line-height:1.2;letter-spacing:-.5px;margin:0;font-weight:750}
+.pill{display:inline-flex;align-items:center;border:1px solid #d7d9dc;border-radius:6px;background:#f8f8f9;padding:6px 9px;color:#555b60;font-size:11px;font-weight:800;white-space:nowrap}
+.layout{display:grid;grid-template-columns:218px minmax(0,1fr);gap:28px}
+.sidebar{border-right:1px solid #e1e3e5;padding:0 21px 20px 0}
+.side-heading{font-size:16px;font-weight:800;margin:0 0 13px}
+.category-list{display:grid;gap:3px}
+.category{border:0;text-align:left;padding:10px 11px;border-radius:7px;background:transparent;color:#303438;font-weight:600}
+.category:hover{background:#f3f4f5}.category.active{background:#e9eaec;color:#191b1d;font-weight:800}
+.filter-group{border-top:1px solid #e4e5e7;margin-top:20px;padding-top:17px}
+.filter-heading{font-size:14px;font-weight:800;margin:0 0 10px}
+.filter-option{display:flex;align-items:center;gap:9px;padding:7px 1px;color:#42474b;font-size:13px;cursor:pointer}
+.filter-option input{accent-color:#272a2d;width:15px;height:15px;margin:0}
+.content{min-width:0}
+.result-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.result-count{font-weight:700;font-size:15px}.muted{color:#73787d;font-weight:400}
+.sort{border:1px solid #c9cdd1;background:#fff;border-radius:7px;padding:9px 11px;color:#292d30}
+.filter-chips{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:19px}
+.chip{background:#fff;border:1px solid #cdd0d3;border-radius:7px;padding:9px 12px;color:#303438;font-weight:650}
+.chip:hover{background:#f5f5f6}.chip.selected{background:#2b2e31;color:#fff;border-color:#2b2e31}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.card{min-width:0;border:1px solid #e0e2e4;border-radius:9px;overflow:hidden;background:#fff;transition:box-shadow .15s}
+.card:hover{box-shadow:0 3px 14px #00000013}
+.thumb{height:220px;position:relative;display:flex;align-items:center;justify-content:center;background:#f2f3f4;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:contain;padding:8px}
+.fallback{font-size:66px}.thumb-label{position:absolute;top:10px;left:10px;background:#fff;border:1px solid #e0e2e4;border-radius:5px;padding:4px 7px;font-size:10px;font-weight:800;letter-spacing:.2px}
+.card-body{padding:14px}
+.item-name{font-size:15px;line-height:1.35;font-weight:750;margin:0 0 5px}
+.creator{color:#70767b;font-size:12px;margin-bottom:13px}
+.price{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:800;margin-bottom:13px}
+.robux{display:inline-flex;width:17px;height:17px;align-items:center;justify-content:center;border-radius:50%;background:var(--green);color:#fff;font-size:10px;font-weight:800}
+.gift{display:block;width:100%;border:0;border-radius:6px;background:var(--green);color:#fff;padding:10px 12px;font-weight:800}
+.gift:hover{background:#008e45}.gift:focus-visible,.chip:focus-visible,.category:focus-visible{outline:3px solid #222;outline-offset:2px}
+.empty{display:none;border:1px dashed #c9cdd1;border-radius:8px;text-align:center;color:#5d6368;padding:40px 15px;margin-top:8px}
+.disclaimer{text-align:center;color:#73787d;font-size:11px;margin:25px 0 0}
+.overlay{display:none;position:fixed;inset:0;z-index:20;background:#0008;align-items:center;justify-content:center;padding:18px}
+.overlay.show{display:flex}.modal{position:relative;background:#fff;border-radius:12px;padding:25px;width:100%;max-width:420px;box-shadow:0 18px 60px #0003}
+.modal h2{font-size:22px;margin:0 38px 10px 0}.modal p{color:#555d62;line-height:1.55}
+.close{position:absolute;right:13px;top:12px;width:32px;height:32px;border:0;border-radius:50%;background:#f0f1f2;font-size:21px}
+.ok{width:100%;margin-top:7px;background:#272a2d;color:#fff;border:0;border-radius:7px;padding:11px;font-weight:800}
+[hidden]{display:none!important}
+@media(max-width:1100px){.topbar{gap:19px;padding:0 18px}.nav{gap:17px}.layout{grid-template-columns:190px minmax(0,1fr);gap:20px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.thumb{height:205px}}
+@media(max-width:720px){.topbar{height:auto;min-height:60px;padding:12px 14px;gap:15px;flex-wrap:wrap}.logo{font-size:23px}.nav{display:none}.search-wrap{order:3;flex-basis:100%;width:100%;max-width:none}.demo-banner{font-size:11px}.page{padding:20px 14px 34px}.heading{align-items:flex-start}h1{font-size:26px}.layout{display:block}.sidebar{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.thumb{height:155px}.card-body{padding:10px}.item-name{font-size:13px}.creator{font-size:11px}.price{font-size:12px}.thumb-label{top:6px;left:6px;font-size:9px}.fallback{font-size:50px}.result-head{align-items:flex-start}.sort{max-width:150px;font-size:12px}.chip{font-size:12px;padding:8px 9px}}
+@media(max-width:390px){.grid{grid-template-columns:1fr}.thumb{height:210px}.card-body{padding:13px}}
+</style>
+</head>
 <body>
 <header class="topbar">
-<a class="logo" href="#" aria-label="Roblox — maquette"><span class="logo-mark"></span> Roblox</a>
-<nav class="nav" aria-label="Navigation"><a href="#">Charts</a><a class="current" href="#">Marketplace</a><a href="#">Create</a><a href="#">Robux</a></nav>
-<div class="search-wrap"><span class="magnify">⌕</span><input id="search" class="search" type="search" placeholder="Search" aria-label="Rechercher un objet"></div>
+  <a class="logo" href="#" aria-label="Marketplace — maquette"><span class="logo-mark" aria-hidden="true"></span> Roblox</a>
+  <nav class="nav" aria-label="Navigation principale"><a href="#" >Charts</a><a class="current" href="#" aria-current="page">Marketplace</a><a href="#">Create</a><a href="#">Robux</a></nav>
+  <div class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><input id="search" class="search" type="search" placeholder="Search" aria-label="Rechercher dans les objets"></div>
 </header>
+<div class="demo-banner"><strong>Maquette non officielle</strong> — aucun compte Roblox n’est demandé et aucun objet réel ne peut être envoyé.</div>
 <main class="page">
-<div class="title-row"><h1>Marketplace</h1><span class="demo-label">DÉMO NON OFFICIELLE</span></div>
-<div class="layout">
-<aside class="sidebar">
-<h2 class="side-title">Categories</h2>
-<a class="side-link active" href="#">All</a><a class="side-link" href="#">Accessories</a><a class="side-link" href="#">Avatar animations</a><a class="side-link" href="#">Clothing</a><a class="side-link" href="#">Body</a><a class="side-link" href="#">Heads</a><a class="side-link" href="#">Bundles</a>
-<div class="filter-title">Sales Type</div><label class="filter-line"><input type="checkbox"> For sale</label><label class="filter-line"><input type="checkbox"> Off sale</label>
-<div class="filter-title">Price</div><label class="filter-line"><input type="checkbox"> Free</label><label class="filter-line"><input type="checkbox"> Paid</label>
-<div class="filter-title">Sorts</div><label class="filter-line"><input type="checkbox"> Relevance</label><label class="filter-line"><input type="checkbox"> Most favorited</label>
-</aside>
-<section>
-<div class="results-head"><strong>All items <span style="color:#777;font-weight:400">· 2 results</span></strong><button class="sort" type="button">Sort by Relevance ▾</button></div>
-<div class="filters"><button class="chip active" type="button">All</button><button class="chip" type="button">All Creators ▾</button><button class="chip" type="button">Any Price ▾</button><button class="chip" type="button">Sales Type ▾</button></div>
-<div class="grid" id="items">
-<article class="card" data-name="korblox deathspeaker"><div class="thumb"><span class="thumb-tag">BUNDLE</span><img data-bundle="192" alt="Korblox Deathspeaker" hidden><span class="fallback" aria-hidden="true">🦿</span></div><div class="card-info"><h2 class="item-name">Korblox Deathspeaker</h2><div class="creator">By Roblox</div><div class="price"><span class="robux">R</span>17,000</div><button class="gift" data-item="Korblox Deathspeaker" type="button">Gift</button></div></article>
-<article class="card" data-name="headless horseman"><div class="thumb"><span class="thumb-tag">BUNDLE</span><img data-bundle="201" alt="Headless Horseman" hidden><span class="fallback" aria-hidden="true">🎃</span></div><div class="card-info"><h2 class="item-name">Headless Horseman</h2><div class="creator">By Roblox</div><div class="price"><span class="robux">R</span>31,000</div><button class="gift" data-item="Headless Horseman" type="button">Gift</button></div></article>
-</div>
-<div class="disclaimer">Maquette indépendante pour démonstration visuelle. Les boutons Gift n’envoient aucun objet Roblox.</div>
-</section>
-</div>
+  <div class="heading"><h1>Marketplace</h1><span class="pill">AVATAR ITEMS</span></div>
+  <div class="layout">
+    <aside class="sidebar" aria-label="Catégories et filtres">
+      <h2 class="side-heading">Categories</h2>
+      <div class="category-list" id="categories">
+        <button class="category active" data-category="all">All</button>
+        <button class="category" data-category="bundles">Bundles</button>
+        <button class="category" data-category="accessories">Accessories</button>
+        <button class="category" data-category="clothing">Clothing</button>
+        <button class="category" data-category="body">Body</button>
+        <button class="category" data-category="heads">Heads</button>
+        <button class="category" data-category="animations">Avatar animations</button>
+      </div>
+      <div class="filter-group">
+        <h3 class="filter-heading">Sales Type</h3>
+        <label class="filter-option"><input id="for-sale" type="checkbox"> For sale</label>
+        <label class="filter-option"><input id="off-sale" type="checkbox"> Off sale</label>
+      </div>
+      <div class="filter-group">
+        <h3 class="filter-heading">Price</h3>
+        <label class="filter-option"><input id="free" type="checkbox"> Free</label>
+        <label class="filter-option"><input id="paid" type="checkbox"> Paid</label>
+      </div>
+      <div class="filter-group">
+        <h3 class="filter-heading">Creator</h3>
+        <label class="filter-option"><input id="roblox-creator" type="checkbox"> Roblox</label>
+      </div>
+    </aside>
+    <section class="content" aria-label="Résultats du Marketplace">
+      <div class="result-head"><div class="result-count">All items <span class="muted" id="count">· 2 results</span></div>
+        <select class="sort" id="sort" aria-label="Trier les objets"><option value="relevance">Sort by Relevance</option><option value="price-low">Price: Low to High</option><option value="price-high">Price: High to Low</option><option value="name">Name</option></select>
+      </div>
+      <div class="filter-chips" aria-label="Filtres rapides"><button class="chip selected" data-chip="all">All</button><button class="chip" data-chip="creator">All Creators ▾</button><button class="chip" data-chip="price">Any Price ▾</button><button class="chip" data-chip="sales">Sales Type ▾</button></div>
+      <div class="grid" id="items">
+        <article class="card" data-name="korblox deathspeaker" data-category="bundles" data-price="17000" data-sale="yes" data-creator="roblox">
+          <div class="thumb"><span class="thumb-label">BUNDLE</span><img data-bundle="192" alt="Aperçu du bundle Korblox Deathspeaker" hidden><span class="fallback" aria-hidden="true">🦿</span></div>
+          <div class="card-body"><h2 class="item-name">Korblox Deathspeaker</h2><div class="creator">By Roblox</div><div class="price"><span class="robux">R</span>17,000</div><button class="gift" data-item="Korblox Deathspeaker" type="button">Gift</button></div>
+        </article>
+        <article class="card" data-name="headless horseman" data-category="bundles" data-price="31000" data-sale="yes" data-creator="roblox">
+          <div class="thumb"><span class="thumb-label">BUNDLE</span><img data-bundle="201" alt="Aperçu du bundle Headless Horseman" hidden><span class="fallback" aria-hidden="true">🎃</span></div>
+          <div class="card-body"><h2 class="item-name">Headless Horseman</h2><div class="creator">By Roblox</div><div class="price"><span class="robux">R</span>31,000</div><button class="gift" data-item="Headless Horseman" type="button">Gift</button></div>
+        </article>
+      </div>
+      <div class="empty" id="empty">No items found. Try changing your search or filters.</div>
+      <p class="disclaimer">Interface de démonstration indépendante, non affiliée à Roblox. Les prix affichés sont indicatifs. Les boutons Gift ne réalisent aucune transaction.</p>
+    </section>
+  </div>
 </main>
-<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal"><button class="close" id="close" aria-label="Fermer">×</button><h2 id="modal-title">Gift</h2><p id="modal-text">Ceci est une démonstration visuelle. Aucun cadeau réel ne sera envoyé.</p><button class="ok" id="ok">Compris</button></div></div>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal"><button class="close" id="close" aria-label="Fermer">×</button><h2 id="modal-title">Gift</h2><p id="modal-text">Fonction de démonstration uniquement.</p><button class="ok" id="ok">Compris</button></div></div>
 <script>
-const overlay=document.getElementById('overlay'),title=document.getElementById('modal-title'),message=document.getElementById('modal-text');
+const overlay=document.getElementById('overlay'),modalTitle=document.getElementById('modal-title'),modalText=document.getElementById('modal-text');
 function closeModal(){overlay.classList.remove('show')}
-document.querySelectorAll('.gift').forEach(b=>b.addEventListener('click',()=>{title.textContent='Gift · '+b.dataset.item;message.textContent='La fonction Gift est une maquette visuelle uniquement. Aucun objet Roblox ne sera envoyé et aucune connexion n’est nécessaire.';overlay.classList.add('show')}));
-document.getElementById('close').addEventListener('click',closeModal);document.getElementById('ok').addEventListener('click',closeModal);overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-document.getElementById('search').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();document.querySelectorAll('.card').forEach(c=>c.hidden=!c.dataset.name.includes(q))});
-document.querySelectorAll('[data-bundle]').forEach(img=>{fetch('https://thumbnails.roblox.com/v1/bundles/thumbnails?bundleIds='+img.dataset.bundle+'&size=420x420&format=Png&isCircular=false').then(r=>r.ok?r.json():Promise.reject()).then(d=>{const u=d.data&&d.data[0]&&d.data[0].imageUrl;if(u){img.src=u;img.hidden=false;img.nextElementSibling.hidden=true}}).catch(()=>{})});
-document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));b.classList.add('active')}));
-</script></body></html>
+document.querySelectorAll('.gift').forEach(button=>button.addEventListener('click',()=>{modalTitle.textContent='Gift · '+button.dataset.item;modalText.textContent='Ceci est seulement une maquette visuelle : aucun objet Roblox ne sera envoyé. Ne saisis jamais ton mot de passe sur un site tiers.';overlay.classList.add('show');document.getElementById('ok').focus()}));
+document.getElementById('close').addEventListener('click',closeModal);document.getElementById('ok').addEventListener('click',closeModal);overlay.addEventListener('click',event=>{if(event.target===overlay)closeModal()});document.addEventListener('keydown',event=>{if(event.key==='Escape')closeModal()});
+const cards=[...document.querySelectorAll('.card')];
+function updateItems(){
+ const query=document.getElementById('search').value.trim().toLowerCase();
+ const category=document.querySelector('.category.active')?.dataset.category||'all';
+ const forSale=document.getElementById('for-sale').checked,offSale=document.getElementById('off-sale').checked;
+ const free=document.getElementById('free').checked,paid=document.getElementById('paid').checked,creator=document.getElementById('roblox-creator').checked;
+ cards.forEach(card=>{
+  const price=Number(card.dataset.price);
+  const matchName=card.dataset.name.includes(query);
+  const matchCategory=category==='all'||card.dataset.category===category;
+  const matchSale=(!forSale&&!offSale)||(forSale&&card.dataset.sale==='yes')||(offSale&&card.dataset.sale==='no');
+  const matchPrice=(!free&&!paid)||(free&&price===0)||(paid&&price>0);
+  const matchCreator=!creator||card.dataset.creator==='roblox';
+  card.hidden=!(matchName&&matchCategory&&matchSale&&matchPrice&&matchCreator);
+ });
+ const visible=cards.filter(card=>!card.hidden);
+ document.getElementById('count').textContent='· '+visible.length+' result'+(visible.length===1?'':'s');
+ document.getElementById('empty').style.display=visible.length?'none':'block';
+ const sort=document.getElementById('sort').value;
+ const grid=document.getElementById('items');
+ const sorted=[...cards].sort((a,b)=>sort==='price-low'?Number(a.dataset.price)-Number(b.dataset.price):sort==='price-high'?Number(b.dataset.price)-Number(a.dataset.price):sort==='name'?a.dataset.name.localeCompare(b.dataset.name):0);
+ sorted.forEach(card=>grid.appendChild(card));
+}
+document.getElementById('search').addEventListener('input',updateItems);
+document.querySelectorAll('.category').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.category').forEach(item=>item.classList.remove('active'));button.classList.add('active');updateItems()}));
+document.querySelectorAll('.filter-option input').forEach(input=>input.addEventListener('change',updateItems));
+document.getElementById('sort').addEventListener('change',updateItems);
+document.querySelectorAll('.chip').forEach(button=>button.addEventListener('click',()=>{
+ const key=button.dataset.chip;
+ if(key==='creator')document.getElementById('roblox-creator').checked=!document.getElementById('roblox-creator').checked;
+ if(key==='price')document.getElementById('paid').checked=!document.getElementById('paid').checked;
+ if(key==='sales')document.getElementById('for-sale').checked=!document.getElementById('for-sale').checked;
+ document.querySelectorAll('.chip').forEach(item=>item.classList.remove('selected'));button.classList.add('selected');updateItems();
+}));
+document.querySelectorAll('[data-bundle]').forEach(img=>{
+ fetch('https://thumbnails.roblox.com/v1/bundles/thumbnails?bundleIds='+encodeURIComponent(img.dataset.bundle)+'&size=420x420&format=Png&isCircular=false')
+ .then(response=>response.ok?response.json():Promise.reject())
+ .then(data=>{const url=data.data&&data.data[0]&&data.data[0].imageUrl;if(url){img.src=url;img.hidden=false;img.nextElementSibling.hidden=true}})
+ .catch(()=>{});
+});
+</script>
+</body>
+</html>
