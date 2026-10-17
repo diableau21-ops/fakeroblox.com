@@ -65,10 +65,16 @@ main{max-width:1180px;margin:30px auto;padding:0 20px}.heading{display:flex;alig
     }).catch(function(){
       document.querySelectorAll('.art').forEach(function(art){art.innerHTML='<div class="placeholder">Aperçu indisponible ici.<br>Le lien officiel permet de voir l’image.</div>';});
     });
+  function filterCards(query){
+    query=(query||'').trim().toLowerCase();
+    document.getElementById('searchInput').value=query;
+    cards.forEach(function(card){card.hidden=!!query && !card.dataset.name.includes(query);});
+  }
+  var initialQuery=new URLSearchParams(window.location.search).get('search')||'';
+  if(initialQuery) filterCards(initialQuery);
   document.getElementById('searchForm').addEventListener('submit',function(event){
     event.preventDefault();
-    var query=document.getElementById('searchInput').value.trim().toLowerCase();
-    cards.forEach(function(card){card.hidden=!!query && !card.dataset.name.includes(query);});
+    filterCards(document.getElementById('searchInput').value);
   });
 })();
 </script>
