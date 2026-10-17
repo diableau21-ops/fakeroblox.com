@@ -6,9 +6,9 @@
 <title>Marketplace — Démo d’objets</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f7f7f8;color:#232527;font-family:Arial,Helvetica,sans-serif;font-size:14px}
-.topbar{height:62px;display:flex;align-items:center;gap:26px;padding:0 26px;background:#fff;border-bottom:1px solid #e3e3e5;position:sticky;top:0;z-index:4}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#191b1d;font-size:23px;font-weight:900;letter-spacing:-1.4px;white-space:nowrap}.logo-mark{width:23px;height:23px;border:6px solid #191b1d;transform:rotate(12deg)}
-.nav{display:flex;align-items:center;gap:25px;font-weight:700;white-space:nowrap}.nav a{color:#252729;text-decoration:none}.nav a:hover{text-decoration:underline}
+.topbar{height:58px;display:flex;align-items:center;gap:27px;padding:0 24px;background:#fff;border-bottom:1px solid #e3e3e5;position:sticky;top:0;z-index:4}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#191b1d;font-size:24px;font-weight:900;letter-spacing:-1.6px;white-space:nowrap}.logo-mark{width:23px;height:23px;border:6px solid #191b1d;transform:rotate(12deg);display:inline-block}
+.nav{display:flex;align-items:center;gap:25px;font-weight:700;white-space:nowrap}.nav a{color:#252729;text-decoration:none;font-size:15px}.nav a:hover{text-decoration:underline}.nav a.current{color:#111;border-bottom:3px solid #191b1d;padding:19px 0 16px}
 .search-wrap{margin-left:auto;max-width:400px;width:100%;position:relative}.search{height:38px;width:100%;border:1px solid #c8cacc;border-radius:7px;background:#f7f7f8;padding:0 13px 0 37px;font-size:14px;outline:none}.search:focus{border-color:#777}.magnify{position:absolute;left:13px;top:10px;color:#5a5d60;font-size:17px}
 .page{max-width:1440px;margin:auto;padding:28px 28px 55px}.title-row{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:23px}.title-row h1{font-size:29px;letter-spacing:-.6px;margin:0;font-weight:750}.demo-label{font-size:11px;font-weight:700;color:#666;background:#ededee;border-radius:5px;padding:7px 9px}
 .layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px}.sidebar{border-right:1px solid #e2e3e4;padding-right:21px}.side-title{font-size:16px;font-weight:750;margin:0 0 17px}.side-link{display:block;color:#343638;padding:10px 11px;border-radius:7px;margin:2px 0;text-decoration:none;font-weight:600}.side-link.active{background:#e7e7e9;font-weight:800}.side-link:hover{background:#ededee}.filter-title{font-size:14px;font-weight:750;margin:25px 0 10px}.filter-line{display:flex;align-items:center;gap:9px;padding:8px 0;color:#44484b;font-size:13px}.filter-line input{accent-color:#27292b;width:15px;height:15px}
@@ -21,8 +21,8 @@
 </style></head>
 <body>
 <header class="topbar">
-<a class="logo" href="#" aria-label="Catalogue démo"><span class="logo-mark"></span> Marketplace</a>
-<nav class="nav" aria-label="Navigation"><a href="#">Discover</a><a href="#">Marketplace</a><a href="#">Create</a><a href="#">Robux</a></nav>
+<a class="logo" href="#" aria-label="Roblox — maquette"><span class="logo-mark"></span> Roblox</a>
+<nav class="nav" aria-label="Navigation"><a href="#">Charts</a><a class="current" href="#">Marketplace</a><a href="#">Create</a><a href="#">Robux</a></nav>
 <div class="search-wrap"><span class="magnify">⌕</span><input id="search" class="search" type="search" placeholder="Search" aria-label="Rechercher un objet"></div>
 </header>
 <main class="page">
