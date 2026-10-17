@@ -2,95 +2,80 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Marketplace</title>
+<title>Marketplace - Avatar Shop</title>
 <style>
-:root{color-scheme:dark;--bg:#191a1b;--panel:#242527;--line:#3a3b3e;--text:#f7f7f8;--muted:#b9bbbe;--blue:#335fff}
+:root{color-scheme:dark;--bg:#191a1c;--surface:#232427;--surface2:#2c2d30;--line:#393a3e;--text:#f7f7f8;--muted:#aeb0b5;--blue:#335fff}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px Arial,Helvetica,sans-serif}
-header{background:#111214;border-bottom:1px solid #303134;position:sticky;top:0;z-index:5}
-.top{max-width:1250px;margin:auto;min-height:66px;padding:12px 22px;display:flex;align-items:center;gap:28px}
-.logo{font-size:21px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap}
-nav{display:flex;gap:22px;flex:1}nav a{color:#e6e6e6;text-decoration:none;font-weight:700}nav a:hover{color:#9db4ff}
-.search{display:flex;gap:7px;width:min(360px,42vw)}.search input{width:100%;min-width:0;background:#28292c;border:1px solid #48494d;border-radius:7px;color:#fff;padding:11px 12px}.search button{border:0;border-radius:7px;background:#fff;color:#171717;font-weight:700;padding:0 14px;cursor:pointer}
-main{max-width:1250px;margin:30px auto;padding:0 22px}.intro{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:24px}h1{font-size:30px;margin:0 0 7px}.muted{color:var(--muted);margin:0}.section-title{font-size:21px;margin:28px 0 15px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.card{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:transform .15s,border-color .15s}.card:hover{transform:translateY(-2px);border-color:#777}.art{height:225px;background:#2e3033;display:flex;align-items:center;justify-content:center;padding:12px}.art img{width:100%;height:100%;object-fit:contain}.placeholder{font-size:13px;color:#c5c6c8;text-align:center;padding:15px}.info{padding:14px}.name{font-size:16px;line-height:1.35;font-weight:700;margin:0 0 7px}.creator{font-size:12px;color:var(--muted);margin-bottom:12px}.price{font-weight:700;margin-bottom:13px;min-height:17px}.coin{display:inline-block;width:12px;height:12px;border-radius:50%;background:#00b7a4;border:2px solid #7ce8df;vertical-align:-1px;margin-right:5px}.actions{display:flex;gap:7px}.actions a{display:block;text-align:center;text-decoration:none;border-radius:6px;padding:9px 6px;font-size:12px;font-weight:700;flex:1}.view{background:#fff;color:#111}.details{background:#393a3d;color:#fff}.status{color:var(--muted);font-size:13px;margin:16px 0}.empty{padding:25px;color:var(--muted);background:var(--panel);border-radius:8px}.hidden{display:none!important}
-@media(max-width:950px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.top{gap:18px}}
-@media(max-width:700px){.top{flex-wrap:wrap;padding:13px 15px;gap:14px}nav{order:3;width:100%;flex:none}.search{width:100%;order:2}main{padding:0 14px;margin:22px auto}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.art{height:170px}.info{padding:11px}.actions{flex-direction:column}h1{font-size:26px}}
+.topbar{height:64px;display:flex;align-items:center;gap:24px;padding:0 26px;background:#111214;border-bottom:1px solid #303135;position:sticky;top:0;z-index:10}
+.logo{color:#fff;text-decoration:none;font-weight:900;font-size:21px;letter-spacing:-.4px;white-space:nowrap}
+.nav{display:flex;align-items:center;gap:22px;flex:1}.nav a{color:#eee;text-decoration:none;font-weight:700}.nav a:hover{color:#aabaff}
+.search{display:flex;gap:8px;width:min(400px,40vw)}.search input{width:100%;min-width:0;background:#28292d;border:1px solid #48494e;color:#fff;border-radius:8px;padding:11px 13px;font-size:14px}.search button{border:0;border-radius:8px;background:#fff;color:#161616;font-weight:700;padding:0 15px;cursor:pointer}
+.page{max-width:1440px;margin:auto;padding:28px 28px 50px}.pagehead{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:25px}h1{font-size:30px;margin:0 0 7px}.subtitle{color:var(--muted);margin:0}.layout{display:grid;grid-template-columns:205px minmax(0,1fr);gap:26px}
+.sidebar{border-right:1px solid var(--line);padding-right:20px}.side-title{font-size:15px;font-weight:800;margin:0 0 12px}.sidegroup{margin-bottom:25px}.sidebtn{display:block;width:100%;text-align:left;padding:10px 12px;border:0;border-radius:7px;background:transparent;color:#ddd;cursor:pointer;font-size:14px;margin:2px 0}.sidebtn:hover,.sidebtn.active{background:#34363a;color:#fff}.sidebtn.active{font-weight:700}
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:18px}.pill{border:1px solid #44464b;background:#252629;color:#eee;border-radius:18px;padding:8px 13px;cursor:pointer;font-size:13px}.pill.active,.pill:hover{background:#f4f4f5;color:#161616;border-color:#f4f4f5}
+.section-title{font-size:20px;margin:24px 0 14px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.card{min-width:0;overflow:hidden;background:var(--surface);border:1px solid #323337;border-radius:9px;transition:transform .14s,border-color .14s}.card:hover{transform:translateY(-2px);border-color:#666}.card[hidden]{display:none!important}
+.art{height:215px;background:#2b2c30;display:flex;align-items:center;justify-content:center;padding:12px}.art img{width:100%;height:100%;object-fit:contain}.placeholder{text-align:center;color:#bfc0c4;font-size:13px;padding:15px}
+.info{padding:13px 14px 15px}.name{font-weight:700;font-size:15px;line-height:1.35;margin:0 0 7px;min-height:38px}.creator{font-size:12px;color:var(--muted);margin-bottom:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.price{font-size:14px;font-weight:700;margin-bottom:13px;min-height:17px}.coin{display:inline-block;width:12px;height:12px;border-radius:50%;background:#00b7a4;border:2px solid #7ce8df;vertical-align:-1px;margin-right:5px}.actions{display:flex;gap:7px}.actions a{flex:1;text-align:center;text-decoration:none;border-radius:6px;padding:9px 5px;font-size:12px;font-weight:700}.view{background:#f5f5f5;color:#111}.details{background:#3a3b40;color:#fff}.status{color:var(--muted);font-size:13px;margin:16px 0}.empty{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:22px;color:var(--muted)}
+@media(max-width:1050px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.layout{grid-template-columns:170px minmax(0,1fr)}.page{padding:22px 18px}}
+@media(max-width:720px){.topbar{height:auto;flex-wrap:wrap;padding:13px 15px;gap:13px}.nav{order:3;width:100%;flex:none;gap:17px}.search{order:2;width:100%}.page{padding:20px 13px}.layout{grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid var(--line);padding:0 0 12px}.sidegroup{margin-bottom:12px}.sidegroup.categories{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.art{height:165px}.info{padding:10px}.actions{flex-direction:column}.pagehead{align-items:start;flex-direction:column}h1{font-size:26px}}
 </style>
 </head>
 <body>
-<header><div class="top">
+<header class="topbar">
 <a class="logo" href="marketplace.html">Marketplace</a>
-<nav><a href="marketplace.html">Marketplace</a><a href="#accessoires">Accessoires</a><a href="#bundles">Bundles</a></nav>
-<form class="search" id="searchForm"><input id="searchInput" type="search" placeholder="Rechercher dans la boutique…" aria-label="Rechercher dans la boutique"><button type="submit">Rechercher</button></form>
-</div></header>
-<main>
-<div class="intro"><div><h1>Marketplace</h1><p class="muted">Des objets et bundles Roblox, avec les deux objets vedettes en premier.</p></div></div>
-<h2 class="section-title" id="bundles">À la une</h2>
-<section class="grid" id="featured">
-<article class="card" data-name="headless horseman headless bundle"><div class="art"><div class="placeholder">Chargement de l’image Roblox…</div></div><div class="info"><p class="name">Headless Horseman</p><div class="creator">Bundle Roblox</div><div class="price">31 000 Robux <span class="muted">(indicatif)</span></div><div class="actions"><a class="details" href="https://www.roblox.com/bundles/201/Headless-Horseman" target="_blank" rel="noopener">Détails</a><a class="view" href="https://www.roblox.com/bundles/201/Headless-Horseman" target="_blank" rel="noopener">Voir sur Roblox</a></div></div></article>
-<article class="card" data-name="korblox deathspeaker korblox bundle"><div class="art"><div class="placeholder">Chargement de l’image Roblox…</div></div><div class="info"><p class="name">Korblox Deathspeaker</p><div class="creator">Bundle Roblox</div><div class="price">17 000 Robux <span class="muted">(indicatif)</span></div><div class="actions"><a class="details" href="https://www.roblox.com/bundles/192/Korblox-Deathspeaker" target="_blank" rel="noopener">Détails</a><a class="view" href="https://www.roblox.com/bundles/192/Korblox-Deathspeaker" target="_blank" rel="noopener">Voir sur Roblox</a></div></div></article>
+<nav class="nav"><a href="marketplace.html">Marketplace</a><a href="#catalog">Boutique</a><a href="#bundles">Bundles</a></nav>
+<form class="search" id="searchForm"><input id="searchInput" type="search" placeholder="Rechercher des objets…" aria-label="Rechercher des objets"><button type="submit">Rechercher</button></form>
+</header>
+<main class="page">
+<div class="pagehead"><div><h1>Marketplace</h1><p class="subtitle">Objets de la boutique Roblox et bundles populaires</p></div></div>
+<div class="layout">
+<aside class="sidebar">
+<div class="sidegroup"><p class="side-title">Découvrir</p><button class="sidebtn active" data-filter="all">Tout</button><button class="sidebtn" data-filter="bundles">Bundles</button><button class="sidebtn" data-filter="accessories">Accessoires</button></div>
+<div class="sidegroup categories"><p class="side-title">Catégories</p><button class="sidebtn" data-keyword="hat">Chapeaux</button><button class="sidebtn" data-keyword="hair">Cheveux</button><button class="sidebtn" data-keyword="face">Visages</button><button class="sidebtn" data-keyword="shirt">Vêtements</button><button class="sidebtn" data-keyword="animation">Animations</button></div>
+</aside>
+<section>
+<div class="toolbar"><button class="pill active" data-sort="featured">En vedette</button><button class="pill" data-sort="recent">Récents</button><button class="pill" data-sort="price">Prix</button></div>
+<h2 class="section-title" id="bundles">En vedette</h2>
+<div class="grid" id="featured">
+<article class="card" data-name="headless horseman headless bundle" data-type="bundles"><div class="art"><div class="placeholder">Chargement de l’image…</div></div><div class="info"><p class="name">Headless Horseman</p><div class="creator">Bundle Roblox</div><div class="price">31 000 Robux <span style="color:#aaa;font-weight:400">(indicatif)</span></div><div class="actions"><a class="details" href="https://www.roblox.com/bundles/201/Headless-Horseman" target="_blank" rel="noopener">Détails</a><a class="view" href="https://www.roblox.com/bundles/201/Headless-Horseman" target="_blank" rel="noopener">Voir sur Roblox</a></div></div></article>
+<article class="card" data-name="korblox deathspeaker korblox bundle" data-type="bundles"><div class="art"><div class="placeholder">Chargement de l’image…</div></div><div class="info"><p class="name">Korblox Deathspeaker</p><div class="creator">Bundle Roblox</div><div class="price">17 000 Robux <span style="color:#aaa;font-weight:400">(indicatif)</span></div><div class="actions"><a class="details" href="https://www.roblox.com/bundles/192/Korblox-Deathspeaker" target="_blank" rel="noopener">Détails</a><a class="view" href="https://www.roblox.com/bundles/192/Korblox-Deathspeaker" target="_blank" rel="noopener">Voir sur Roblox</a></div></div></article>
+</div>
+<h2 class="section-title" id="catalog">Autres objets de la boutique</h2>
+<div class="grid" id="catalogGrid"></div>
+<p class="status" id="status" aria-live="polite">Chargement des objets du catalogue…</p>
+<div id="empty" class="empty" hidden>Aucun objet ne correspond à cette recherche.</div>
 </section>
-<h2 class="section-title" id="accessoires">Autres objets de la boutique</h2>
-<section class="grid" id="catalogGrid"></section>
-<p class="status" id="status" aria-live="polite">Chargement des objets du catalogue Roblox…</p>
+</div>
 </main>
 <script>
 (function(){
-  var featured=Array.from(document.querySelectorAll('#featured .card'));
-  var grid=document.getElementById('catalogGrid');
-  var status=document.getElementById('status');
-  var allCards=featured.slice();
-  function imageFor(url,alt,box){
-    box.textContent='';
-    var img=document.createElement('img');img.src=url;img.alt=alt;img.loading='lazy';
-    img.onerror=function(){box.innerHTML='<div class="placeholder">Aperçu indisponible</div>';};
-    box.appendChild(img);
-  }
-  fetch('https://thumbnails.roblox.com/v1/bundles/thumbnails?bundleIds=201,192&size=420x420&format=Png&isCircular=false')
-    .then(function(r){if(!r.ok)throw Error('thumbnail');return r.json();})
-    .then(function(j){(j.data||[]).forEach(function(x){var card=x.targetId===201?featured[0]:x.targetId===192?featured[1]:null;if(card&&x.imageUrl)imageFor(x.imageUrl,card.querySelector('.name').textContent,card.querySelector('.art'));});})
-    .catch(function(){featured.forEach(function(c){c.querySelector('.art').innerHTML='<div class="placeholder">L’aperçu n’a pas pu être chargé.</div>';});});
-  function addItem(item){
-    if(!item||!item.id||!item.name)return;
-    var card=document.createElement('article');card.className='card';card.dataset.name=(item.name+' '+(item.creatorName||'')+' '+(item.assetType||'')).toLowerCase();
-    var art=document.createElement('div');art.className='art';art.innerHTML='<div class="placeholder">Chargement de l’image…</div>';
-    var info=document.createElement('div');info.className='info';
-    var name=document.createElement('p');name.className='name';name.textContent=item.name;
-    var creator=document.createElement('div');creator.className='creator';creator.textContent=item.creatorName?'Par '+item.creatorName:'Objet Roblox';
-    var price=document.createElement('div');price.className='price';
-    if(typeof item.price==='number'){price.innerHTML='<span class="coin"></span>'+item.price.toLocaleString('fr-CA')+' Robux';}else{price.textContent=item.isForSale===false?'Pas en vente':'Voir le prix sur Roblox';}
-    var actions=document.createElement('div');actions.className='actions';
-    var details=document.createElement('a');details.className='details';details.textContent='Détails';details.href='https://www.roblox.com/catalog/'+item.id;
-    var view=document.createElement('a');view.className='view';view.textContent='Voir sur Roblox';view.href='https://www.roblox.com/catalog/'+item.id;view.target='_blank';view.rel='noopener';
-    actions.append(details,view);info.append(name,creator,price,actions);card.append(art,info);grid.appendChild(card);allCards.push(card);
-    return {id:item.id,card:card,name:item.name,art:art};
-  }
-  function loadCatalog(keyword){
-    grid.textContent='';allCards=featured.slice();
-    status.textContent='Chargement des objets du catalogue Roblox…';
-    var body={Category:1,Limit:30,SortType:3,IncludeNotForSale:true};
-    if(keyword)body.Keyword=keyword;
-    fetch('https://catalog.roblox.com/v1/search/items/details',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
-      .then(function(r){if(!r.ok)throw Error('catalogue');return r.json();})
-      .then(function(j){
-        var items=(j.data||[]).filter(function(x){return x&&x.id&&x.name;});
-        if(!items.length){status.textContent='Aucun autre objet trouvé pour cette recherche.';return;}
-        var entries=items.map(addItem).filter(Boolean);
-        status.textContent='Objets chargés depuis le catalogue Roblox.';
-        var ids=entries.map(function(x){return x.id;}).join(',');
-        if(ids)fetch('https://thumbnails.roblox.com/v1/assets?assetIds='+ids+'&size=420x420&format=Png&isCircular=false')
-          .then(function(r){if(!r.ok)throw Error('images');return r.json();})
-          .then(function(j){(j.data||[]).forEach(function(t){var e=entries.find(function(z){return z.id===t.targetId;});if(e&&t.imageUrl)imageFor(t.imageUrl,e.name,e.art);});})
-          .catch(function(){});
-        applyFilter(keyword||'');
-      })
-      .catch(function(){status.textContent='Roblox bloque peut-être le chargement direct du catalogue depuis GitHub Pages. Les deux bundles en vedette restent disponibles; les autres objets ne peuvent pas être chargés en direct dans ce navigateur.';});
-  }
-  function applyFilter(q){q=(q||'').trim().toLowerCase();allCards.forEach(function(card){card.classList.toggle('hidden',!!q&&!card.dataset.name.includes(q));});}
-  document.getElementById('searchForm').addEventListener('submit',function(e){e.preventDefault();var q=document.getElementById('searchInput').value.trim();if(q.toLowerCase().includes('headless')){applyFilter('headless');return;}if(q.toLowerCase().includes('korblox')){applyFilter('korblox');return;}loadCatalog(q);});
-  document.querySelectorAll('nav a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();document.getElementById(a.getAttribute('href').slice(1)).scrollIntoView({behavior:'smooth'});});});
-  var initial=new URLSearchParams(location.search).get('search')||'';if(initial){document.getElementById('searchInput').value=initial;}
-  loadCatalog(initial);
+var featured=Array.from(document.querySelectorAll('#featured .card')),grid=document.getElementById('catalogGrid'),status=document.getElementById('status'),empty=document.getElementById('empty'),allCards=featured.slice(),currentType='all',currentKeyword='',catalogItems=[];
+function imageFor(url,alt,box){box.textContent='';var img=document.createElement('img');img.src=url;img.alt=alt;img.loading='lazy';img.onerror=function(){box.innerHTML='<div class="placeholder">Image non disponible</div>';};box.appendChild(img);}
+fetch('https://thumbnails.roblox.com/v1/bundles/thumbnails?bundleIds=201,192&size=420x420&format=Png&isCircular=false').then(function(r){if(!r.ok)throw Error();return r.json();}).then(function(j){(j.data||[]).forEach(function(x){var card=x.targetId===201?featured[0]:x.targetId===192?featured[1]:null;if(card&&x.imageUrl)imageFor(x.imageUrl,card.querySelector('.name').textContent,card.querySelector('.art'));});}).catch(function(){featured.forEach(function(c){c.querySelector('.art').innerHTML='<div class="placeholder">Ouvre la fiche Roblox pour voir l’aperçu.</div>';});});
+function makeCard(item){
+var card=document.createElement('article');card.className='card';card.dataset.name=(item.name+' '+(item.creatorName||'')).toLowerCase();card.dataset.type='accessories';card.dataset.price=typeof item.price==='number'?item.price:'999999999';
+var art=document.createElement('div');art.className='art';art.innerHTML='<div class="placeholder">Chargement de l’image…</div>';
+var info=document.createElement('div');info.className='info';var name=document.createElement('p');name.className='name';name.textContent=item.name;var creator=document.createElement('div');creator.className='creator';creator.textContent=item.creatorName?'Par '+item.creatorName:'Objet Roblox';var price=document.createElement('div');price.className='price';price.innerHTML=typeof item.price==='number'?'<span class="coin"></span>'+item.price.toLocaleString('fr-CA')+' Robux':'Voir le prix sur Roblox';var actions=document.createElement('div');actions.className='actions';var d=document.createElement('a');d.className='details';d.textContent='Détails';d.href='https://www.roblox.com/catalog/'+item.id;d.target='_blank';d.rel='noopener';var v=d.cloneNode();v.className='view';v.textContent='Voir sur Roblox';actions.append(d,v);info.append(name,creator,price,actions);card.append(art,info);grid.appendChild(card);allCards.push(card);return {id:item.id,name:item.name,card:card,art:art};
+}
+function applyFilters(){var q=currentKeyword.toLowerCase();allCards.forEach(function(c){var matchType=currentType==='all'||c.dataset.type===currentType;var matchText=!q||c.dataset.name.includes(q);c.hidden=!(matchType&&matchText);});var visible=allCards.some(function(c){return !c.hidden;});empty.hidden=visible;document.getElementById('featured').style.display=(currentType==='accessories'||(q&&!featured.some(function(c){return c.dataset.name.includes(q)})) )?'none':'grid';document.getElementById('bundles').style.display=document.getElementById('featured').style.display==='none'?'none':'block';document.getElementById('catalog').style.display=currentType==='bundles'?'none':'block';}
+function loadCatalog(keyword){
+grid.textContent='';allCards=featured.slice();catalogItems=[];status.textContent='Chargement du catalogue Roblox…';
+var body={Category:1,Limit:30,SortType:3,IncludeNotForSale:true};if(keyword)body.Keyword=keyword;
+fetch('https://catalog.roblox.com/v1/search/items/details',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){if(!r.ok)throw Error('catalogue');return r.json();}).then(function(j){
+var items=(j.data||[]).filter(function(x){return x&&x.id&&x.name;});if(!items.length){status.textContent='Aucun autre objet reçu du catalogue pour cette recherche.';applyFilters();return;}
+var entries=items.map(makeCard);status.textContent='Objets reçus du catalogue Roblox.';var ids=entries.map(function(x){return x.id;}).join(',');
+if(ids)fetch('https://thumbnails.roblox.com/v1/assets?assetIds='+ids+'&size=420x420&format=Png&isCircular=false').then(function(r){if(!r.ok)throw Error();return r.json();}).then(function(j){(j.data||[]).forEach(function(t){var e=entries.find(function(z){return z.id===t.targetId;});if(e&&t.imageUrl)imageFor(t.imageUrl,e.name,e.art);});}).catch(function(){});
+applyFilters();
+}).catch(function(){status.textContent='Roblox ne permet pas le chargement direct du catalogue depuis cette page. Les deux bundles vedettes restent visibles.';applyFilters();});
+}
+document.getElementById('searchForm').addEventListener('submit',function(e){e.preventDefault();currentKeyword=document.getElementById('searchInput').value.trim();if(/headless/i.test(currentKeyword)){currentType='all';applyFilters();return;}if(/korblox/i.test(currentKeyword)){currentType='all';applyFilters();return;}loadCatalog(currentKeyword);});
+document.querySelectorAll('[data-filter]').forEach(function(b){b.addEventListener('click',function(){currentType=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(function(x){x.classList.toggle('active',x===b);});applyFilters();});});
+document.querySelectorAll('[data-keyword]').forEach(function(b){b.addEventListener('click',function(){currentKeyword=b.dataset.keyword;document.getElementById('searchInput').value=currentKeyword;loadCatalog(currentKeyword);});});
+document.querySelectorAll('[data-sort]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-sort]').forEach(function(x){x.classList.toggle('active',x===b);});var sort=b.dataset.sort;if(sort==='price'){Array.from(grid.children).sort(function(a,b){return Number(a.dataset.price)-Number(b.dataset.price);}).forEach(function(c){grid.appendChild(c);});}else if(sort==='recent'){Array.from(grid.children).reverse().forEach(function(c){grid.appendChild(c);});}});});
+document.querySelectorAll('.nav a').forEach(function(a){a.addEventListener('click',function(e){var href=a.getAttribute('href');if(href==='#catalog'||href==='#bundles'){e.preventDefault();document.querySelector(href).scrollIntoView({behavior:'smooth'});}});});
+var initial=new URLSearchParams(location.search).get('search')||'';if(initial){document.getElementById('searchInput').value=initial;currentKeyword=initial;}
+loadCatalog(initial);
 })();
 </script>
 </body></html>
