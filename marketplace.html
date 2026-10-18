@@ -69,7 +69,7 @@ main{min-width:0;padding:25px 30px 60px;max-width:1600px;width:100%;margin:0 aut
 <div class="toast" id="toast" role="status"></div>
 <script>
 const items=[
-{id:201,name:"Headless Horseman",creator:"Roblox",price:17000,category:"bundle",emoji:"🎃",label:"Bundle",description:"The classic Headless Horseman bundle. This demo card uses sample information; live availability and purchasing are not connected.",image:"",onSale:true,unavailable:false},
+{id:201,name:"Headless Horseman",creator:"Roblox",price:17000,category:"bundle",emoji:"🎃",image:"",label:"Bundle",description:"The classic Headless Horseman bundle. This demo card uses sample information; live availability and purchasing are not connected.",image:"",onSale:true,unavailable:false},
 {id:202,name:"Korblox Deathspeaker",creator:"Roblox",price:17000,category:"bundle",emoji:"🦴",label:"Bundle",description:"A fantasy-inspired avatar bundle shown here as a demo catalog item.",onSale:true,unavailable:false},
 {id:203,name:"Void Cube",creator:"Demo Studio",price:125,category:"face",emoji:"🟪",label:"Accessory",description:"A mysterious void-themed accessory for this demo catalog.",onSale:true,unavailable:false},
 {id:204,name:"Transparent Cloak",creator:"Avatar Lab",price:250,category:"scarf",emoji:"🧥",label:"Accessory",description:"A cloak-style avatar accessory example.",onSale:true,unavailable:false},
@@ -102,9 +102,9 @@ function draw(){
 const list=filteredItems();document.getElementById("resultCount").textContent=list.length+" items";
 grid.innerHTML="";
 if(!list.length){grid.innerHTML='<div class="empty"><h2>No items found</h2><p>Try changing your search or filters.</p></div>';return}
-list.forEach(item=>{const card=document.createElement("button");card.className="card";card.type="button";card.setAttribute("aria-label","View "+item.name);card.innerHTML='<div class="thumb"><span class="emoji" aria-hidden="true">'+item.emoji+'</span><span class="item-label">'+(item.unavailable?"Unavailable":item.label)+'</span></div><div class="card-info"><div class="item-name"></div><div class="creator"></div><div class="price-line"><span class="robux">R</span><span>'+robuxPrice(item.price)+'</span></div></div>';card.querySelector(".item-name").textContent=item.name;card.querySelector(".creator").textContent="By "+item.creator;card.addEventListener("click",()=>openItem(item));grid.appendChild(card)});
+list.forEach(item=>{const card=document.createElement("button");card.className="card";card.type="button";card.setAttribute("aria-label","View "+item.name);card.innerHTML='<div class="thumb"><span class="emoji" aria-hidden="true">'+item.emoji+'</span><span class="item-label">'+(item.unavailable?"Unavailable":item.label)+'</span></div><div class="card-info"><div class="item-name"></div><div class="creator"></div><div class="price-line"><span class="robux">R</span><span>'+robuxPrice(item.price)+'</span></div></div>';if(item.image){const im=document.createElement("img");im.src=item.image;im.alt=item.name;im.onload=()=>{const em=card.querySelector(".thumb .emoji");if(em)em.style.display="none"};card.querySelector(".thumb").prepend(im)}card.querySelector(".item-name").textContent=item.name;card.querySelector(".creator").textContent="By "+item.creator;card.addEventListener("click",()=>openItem(item));grid.appendChild(card)});
 }
-function openItem(item){selected=item;document.getElementById("modalTitle").textContent=item.name;document.getElementById("modalCreator").textContent="By "+item.creator;document.getElementById("modalDescription").textContent=item.description;document.getElementById("modalPrice").textContent=robuxPrice(item.price);document.getElementById("modalType").textContent=item.label;document.getElementById("modalImage").innerHTML='<span class="emoji">'+item.emoji+'</span>';document.getElementById("modalBackdrop").classList.add("open")}
+function openItem(item){selected=item;document.getElementById("modalTitle").textContent=item.name;document.getElementById("modalCreator").textContent="By "+item.creator;document.getElementById("modalDescription").textContent=item.description;document.getElementById("modalPrice").textContent=robuxPrice(item.price);document.getElementById("modalType").textContent=item.label;document.getElementById("modalImage").innerHTML=item.image?'<img src="'+item.image+'" alt="">':'<span class="emoji">'+item.emoji+'</span>';document.getElementById("modalBackdrop").classList.add("open")}
 function closeModal(){document.getElementById("modalBackdrop").classList.remove("open")}
 function updateCart(){document.getElementById("cartCount").textContent=cart.length;document.getElementById("cartCount2").textContent=cart.length}
 function addCart(item){if(cart.some(x=>x.id===item.id)){notify(item.name+" is already in your demo cart.");return}cart.push(item);updateCart();notify(item.name+" added to demo cart.")}
@@ -123,6 +123,8 @@ document.getElementById("retryButton").addEventListener("click",()=>document.get
 /* Set window.DEMO_CATALOG_ERROR = true in dev tools to preview the separate light error state. */
 if(window.DEMO_CATALOG_ERROR===true)document.getElementById("errorState").classList.add("visible");
 draw();
+/* Load the official public thumbnail for bundle 201 when Roblox thumbnail service is available. */
+fetch("https://thumbnails.roblox.com/v1/bundles/thumbnails?bundleIds=201&size=420x420&format=Png&isCircular=false").then(r=>r.ok?r.json():Promise.reject()).then(d=>{const url=d&&d.data&&d.data[0]&&d.data[0].imageUrl;if(url){items[0].image=url;draw()}}).catch(()=>{});
 </script>
 </body>
 </html>
