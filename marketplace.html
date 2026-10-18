@@ -20,6 +20,13 @@ main{min-width:0;padding:25px 30px 60px;max-width:1600px;width:100%;margin:0 aut
 @media(max-width:1200px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.shell{grid-template-columns:200px minmax(0,1fr)}main{padding:24px 22px}.nav{gap:15px}.top{gap:18px}}
 @media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.shell{grid-template-columns:66px minmax(0,1fr)}.sidebar{padding:14px 7px}.side-link{justify-content:center;padding:11px 5px}.side-link .label,.sidebar-label,.side-divider{display:none}.side-link .ico{font-size:20px}.nav{display:none}.global-search{width:auto;flex:1}.top-actions{gap:7px}}
 @media(max-width:600px){.top{height:auto;min-height:56px;padding:10px 12px;gap:12px;flex-wrap:wrap}.brand{font-size:21px}.global-search{order:3;flex-basis:100%;width:100%}.top-actions{margin-left:auto}.top-actions .top-icon:nth-child(2){display:none}.shell{grid-template-columns:1fr}.sidebar{display:flex;gap:4px;overflow-x:auto;border-right:0;border-bottom:1px solid #303236;padding:8px}.side-link{flex:0 0 auto;margin:0;padding:8px 10px}.side-link .label{display:inline;font-size:12px}.side-link .ico{font-size:16px;width:auto}main{padding:20px 12px 40px}.page-head{align-items:flex-start}h1{font-size:27px}.head-actions .round-btn{font-size:12px;padding:0 8px}.filters{gap:7px}.filter{min-width:calc(50% - 5px);max-width:none}.filter.check{min-width:unset}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.thumb{aspect-ratio:1}.emoji{font-size:62px}.card-info{padding:9px}.item-name{font-size:13px}.modal{grid-template-columns:1fr;gap:15px;padding:16px}.modal-image{max-height:260px}.modal h2{font-size:22px}.modal-close{background:#232527;border-radius:50%;z-index:1}}
+
+/* Embedded mode: show only the catalog inside the existing homepage shell. */
+body.embed-mode .top,body.embed-mode .sidebar{display:none!important}
+body.embed-mode .shell{display:block;min-height:0}
+body.embed-mode main{max-width:none;width:100%;padding:20px 22px 40px}
+body.embed-mode .disclaimer{margin-top:20px}
+@media(max-width:600px){body.embed-mode main{padding:16px 10px 30px}}
 </style>
 </head>
 <body>
@@ -68,6 +75,7 @@ main{min-width:0;padding:25px 30px 60px;max-width:1600px;width:100%;margin:0 aut
 <div class="error-state" id="errorState"><div class="error-inner"><h2>Catalog temporarily unavailable.</h2><p>Please try again later.</p><button class="round-btn" id="retryButton">Try Again</button></div></div>
 <div class="toast" id="toast" role="status"></div>
 <script>
+if(new URLSearchParams(window.location.search).get("embed")==="1")document.body.classList.add("embed-mode");
 const items=[
 {id:201,name:"Headless Horseman",creator:"Roblox",price:17000,category:"bundle",emoji:"🎃",image:"",label:"Bundle",description:"The classic Headless Horseman bundle. This demo card uses sample information; live availability and purchasing are not connected.",image:"",onSale:true,unavailable:false},
 {id:202,name:"Korblox Deathspeaker",creator:"Roblox",price:17000,category:"bundle",emoji:"🦴",label:"Bundle",description:"A fantasy-inspired avatar bundle shown here as a demo catalog item.",onSale:true,unavailable:false},
