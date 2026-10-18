@@ -174,7 +174,7 @@
 <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="CookieBannerV3" data-bundle-source="Main" href="https://css.rbxcdn.com/5ecfbd9e9320d9cc9e7f87ae35c6aa2f79f9fa66f7c839eb4f0b4269a8227677-CookieBannerV3.css" />
 <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)" data-bundlename="Footer" data-bundle-source="Main" href="https://css.rbxcdn.com/8b759c6280a056ed34d6d00ba7fa7abacfb3009b8e93e677416723b0c1056cad-Footer.css" />
 
-    <link rel="canonical" href="marketplace.html" />
+    <link rel="canonical" href="index.html" />
     
 
     <link rel="alternate" href="marketplace.html" hreflang="x-default" />
@@ -426,7 +426,7 @@
 
         <div class="content" id="content">
             
-<iframe id="fakeroblox-marketplace-frame" title="FakeRoblox Marketplace" src="marketplace.html?embed=1" style="display:block;width:100%;min-height:calc(100vh - 60px);height:1200px;border:0;background:#191b1d;" loading="eager"></iframe>
+<div id="catalog-react-container"></div>
 
         </div>
     </main><!--Bootstrap Footer React Component -->
@@ -792,40 +792,7 @@
     <script onerror='Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)' data-monitor='true' data-bundlename='pageEnd' type='text/javascript' src='https://js.rbxcdn.com/148c82f7d764bc2e30465cb5fa9873b3.js'></script>
 
 
-<script>
-/* Search shortcut: send Headless Horseman searches to the Roblox Marketplace results. */
-(function () {
-  function redirectHeadless(input) {
-    if (!input || typeof input.value !== "string") return false;
-    if (/headless\s+horseman/i.test(input.value.trim())) {
-      window.location.href = "marketplace.html?search=Headless%20Horseman";
-      return true;
-    }
-    return false;
-  }
 
-  document.addEventListener("keydown", function (event) {
-    if (event.key !== "Enter") return;
-    var target = event.target;
-    if (target && /^(INPUT|TEXTAREA)$/i.test(target.tagName)) {
-      redirectHeadless(target);
-    }
-  }, true);
-
-  document.addEventListener("submit", function (event) {
-    var form = event.target;
-    if (!form || !form.querySelectorAll) return;
-    var inputs = form.querySelectorAll('input, textarea');
-    for (var i = 0; i < inputs.length; i++) {
-      if (redirectHeadless(inputs[i])) {
-        event.preventDefault();
-        event.stopPropagation();
-        return;
-      }
-    }
-  }, true);
-})();
-</script>
 
 
 
