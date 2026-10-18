@@ -63,6 +63,20 @@ body.embed-mode main{max-width:none;width:100%;padding:20px 22px 40px}
 body.embed-mode .disclaimer{margin-top:20px}
 @media(max-width:600px){body.embed-mode main{padding:16px 10px 30px}}
 </style>
+<style>
+/* Catalog-first layout: neutral item placeholders until public catalog data is connected. */
+.skeleton-card{cursor:default;transform:none!important;border-color:#303236}
+.skeleton-thumb{background:linear-gradient(110deg,#292b2e 8%,#343639 18%,#292b2e 33%);background-size:200% 100%;animation:catalog-shimmer 1.7s linear infinite}
+.skeleton-line{height:10px;width:64%;margin:9px 0;border-radius:5px;background:#383a3e}
+.skeleton-line.wide{height:12px;width:88%;margin-top:2px}
+.skeleton-line.short{width:35%}
+.skeleton-card .card-info{min-height:85px}
+@keyframes catalog-shimmer{to{background-position-x:-200%}}
+.chips{padding-bottom:12px}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:850px){.shell{grid-template-columns:190px minmax(0,1fr)}main{padding:22px 18px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){.top{padding:0 12px;gap:12px}.nav{display:none}.global-search{width:auto;flex:1}.top-actions{gap:5px}.sidebar{display:none}.shell{display:block}main{padding:18px 12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.filters{gap:7px}.filter{min-width:calc(50% - 7px)}h1{font-size:25px}}
+</style>
 </head>
 <body>
 <header class="top">
@@ -100,10 +114,10 @@ body.embed-mode .disclaimer{margin-top:20px}
 <select class="filter" id="salesFilter" aria-label="Sales type"><option value="all">Sales Type: All</option><option value="on-sale">On Sale</option><option value="off-sale">Off Sale</option></select>
 <label class="filter check"><input id="unavailableFilter" type="checkbox"> Unavailable Items</label>
 </div>
-<div class="chips" id="categories"><button class="chip active" data-category="All">All</button><button class="chip" data-category="dreads">Dreads</button><button class="chip" data-category="emotes">Emotes</button><button class="chip" data-category="face">Face</button><button class="chip" data-category="monkey">Monkey</button><button class="chip" data-category="beard">Beard</button><button class="chip" data-category="fedora">Fedora</button><button class="chip" data-category="scarf">Scarf</button><button class="chip" data-category="beanie">Beanie</button><button class="chip" data-category="sunglasses">Sunglasses</button><button class="chip" data-category="bundle">Bundles</button></div>
-<div class="result-row"><span id="resultCount">Items</span><span>Demo catalog · prices are illustrative</span></div>
+<div class="chips" id="categories"><button class="chip active" data-category="All">All</button><button class="chip" data-category="Featured">Featured</button><button class="chip" data-category="Accessories">Accessories</button><button class="chip" data-category="Clothing">Clothing</button><button class="chip" data-category="Body">Body</button><button class="chip" data-category="Animations">Animations</button><button class="chip" data-category="Bundles">Bundles</button><button class="chip" data-category="Heads">Heads</button></div>
+<div class="result-row"><span id="resultCount">Marketplace</span><span>Catalog layout preview</span></div>
 <div class="grid" id="itemGrid" aria-live="polite"></div>
-<div class="disclaimer">Fan-made visual demo, not affiliated with Roblox Corporation. Item examples and prices are illustrative. The demo cart and buttons do not make purchases or connect to a Roblox account.</div>
+<div class="disclaimer">Fan-made visual recreation. Catalog items and API data will be connected in a later step. This page does not connect to Roblox accounts or make purchases.</div>
 </main>
 </div>
 <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><section class="modal"><button class="modal-close" id="modalClose" aria-label="Close">×</button><div class="modal-image" id="modalImage"></div><div><div class="item-label" style="position:static;display:inline-block" id="modalType">ITEM</div><h2 id="modalTitle">Item</h2><div class="creator" id="modalCreator"></div><div class="description" id="modalDescription"></div><div class="modal-price"><span class="robux">R</span><span id="modalPrice"></span></div><div class="modal-actions"><button class="primary" id="modalBuy">Buy</button><button class="secondary" id="modalCart">Add to Cart</button></div><p style="font-size:11px;color:#92969c;line-height:1.5">Demo only — no real purchase or account connection.</p></div></section></div>
@@ -111,23 +125,7 @@ body.embed-mode .disclaimer{margin-top:20px}
 <div class="toast" id="toast" role="status"></div>
 <script>
 if(new URLSearchParams(window.location.search).get("embed")==="1")document.body.classList.add("embed-mode");
-const items=[
-{id:201,name:"Headless Horseman",creator:"Roblox",price:17000,category:"bundle",emoji:"🎃",image:"",label:"Bundle",description:"The classic Headless Horseman bundle. This demo card uses sample information; live availability and purchasing are not connected.",image:"",onSale:true,unavailable:false},
-{id:202,name:"Korblox Deathspeaker",creator:"Roblox",price:17000,category:"bundle",emoji:"🦴",label:"Bundle",description:"A fantasy-inspired avatar bundle shown here as a demo catalog item.",onSale:true,unavailable:false},
-{id:203,name:"Void Cube",creator:"Demo Studio",price:125,category:"face",emoji:"🟪",label:"Accessory",description:"A mysterious void-themed accessory for this demo catalog.",onSale:true,unavailable:false},
-{id:204,name:"Transparent Cloak",creator:"Avatar Lab",price:250,category:"scarf",emoji:"🧥",label:"Accessory",description:"A cloak-style avatar accessory example.",onSale:true,unavailable:false},
-{id:205,name:"Black Dreads",creator:"Avatar Lab",price:85,category:"dreads",emoji:"🖤",label:"Hair",description:"Dark dreadlock hair accessory sample.",onSale:true,unavailable:false},
-{id:206,name:"Cool Sunglasses",creator:"Demo Studio",price:50,category:"sunglasses",emoji:"🕶️",label:"Accessory",description:"A pair of sunglasses for the sample catalog.",onSale:true,unavailable:false},
-{id:207,name:"Classic Fedora",creator:"Roblox",price:150,category:"fedora",emoji:"🎩",label:"Hat",description:"A classic fedora-style hat sample.",onSale:true,unavailable:false},
-{id:208,name:"Warm Beanie",creator:"Avatar Lab",price:65,category:"beanie",emoji:"🧢",label:"Hat",description:"A simple beanie hat sample.",onSale:true,unavailable:false},
-{id:209,name:"Friendly Beard",creator:"Demo Studio",price:35,category:"beard",emoji:"🧔",label:"Face",description:"A beard accessory sample.",onSale:true,unavailable:false},
-{id:210,name:"Monkey Buddy",creator:"Avatar Lab",price:90,category:"monkey",emoji:"🐵",label:"Shoulder",description:"A playful monkey-themed sample accessory.",onSale:true,unavailable:false},
-{id:211,name:"Wave Emote",creator:"Roblox",price:80,category:"emotes",emoji:"👋",label:"Emote",description:"An emote example in the demo catalog.",onSale:true,unavailable:false},
-{id:212,name:"Classic Smile",creator:"Roblox",price:0,category:"face",emoji:"🙂",label:"Face",description:"A free face example.",onSale:true,unavailable:false},
-{id:213,name:"Unavailable Crown",creator:"Demo Studio",price:500,category:"fedora",emoji:"👑",label:"Hat",description:"An unavailable sample item. Turn on Unavailable Items to include it.",onSale:false,unavailable:true},
-{id:214,name:"Limited Scarf",creator:"Avatar Lab",price:110,category:"scarf",emoji:"🧣",label:"Accessory",description:"A scarf accessory example.",onSale:false,unavailable:true},
-{id:215,name:"Happy Emote",creator:"Demo Studio",price:0,category:"emotes",emoji:"😄",label:"Emote",description:"A free sample emote.",onSale:true,unavailable:false}
-];
+const items=[];
 let category="All",query="",selected=null,cart=[];
 const grid=document.getElementById("itemGrid"),toast=document.getElementById("toast");
 function notify(text){toast.textContent=text;toast.classList.add("show");clearTimeout(notify.timer);notify.timer=setTimeout(()=>toast.classList.remove("show"),2600)}
@@ -142,9 +140,9 @@ const sort=document.getElementById("sortFilter").value;
 if(sort==="low")list.sort((a,b)=>a.price-b.price);if(sort==="high")list.sort((a,b)=>b.price-a.price);if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
 return list}
 function draw(){
-const list=filteredItems();document.getElementById("resultCount").textContent=list.length+" items";
+const list=filteredItems();document.getElementById("resultCount").textContent=list.length ? list.length+" items" : "Marketplace items";
 grid.innerHTML="";
-if(!list.length){grid.innerHTML='<div class="empty"><h2>No items found</h2><p>Try changing your search or filters.</p></div>';return}
+if(!list.length){grid.innerHTML=Array.from({length:20},()=>'<div class="card skeleton-card" aria-hidden="true"><div class="thumb skeleton-thumb"></div><div class="card-info"><div class="skeleton-line wide"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div></div>').join("");return}
 list.forEach(item=>{const card=document.createElement("button");card.className="card";card.type="button";card.setAttribute("aria-label","View "+item.name);card.innerHTML='<div class="thumb"><span class="emoji" aria-hidden="true">'+item.emoji+'</span><span class="item-label">'+(item.unavailable?"Unavailable":item.label)+'</span></div><div class="card-info"><div class="item-name"></div><div class="creator"></div><div class="price-line"><span class="robux">R</span><span>'+robuxPrice(item.price)+'</span></div></div>';if(item.image){const im=document.createElement("img");im.src=item.image;im.alt=item.name;im.onload=()=>{const em=card.querySelector(".thumb .emoji");if(em)em.style.display="none"};card.querySelector(".thumb").prepend(im)}card.querySelector(".item-name").textContent=item.name;card.querySelector(".creator").textContent="By "+item.creator;card.addEventListener("click",()=>openItem(item));grid.appendChild(card)});
 }
 function openItem(item){selected=item;document.getElementById("modalTitle").textContent=item.name;document.getElementById("modalCreator").textContent="By "+item.creator;document.getElementById("modalDescription").textContent=item.description;document.getElementById("modalPrice").textContent=robuxPrice(item.price);document.getElementById("modalType").textContent=item.label;document.getElementById("modalImage").innerHTML=item.image?'<img src="'+item.image+'" alt="">':'<span class="emoji">'+item.emoji+'</span>';document.getElementById("modalBackdrop").classList.add("open")}
