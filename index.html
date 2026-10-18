@@ -887,5 +887,87 @@
 }
 </style>
 
+
+<style id="fakeroblox-dark-large-menu">
+/* Dark Roblox-style appearance across the homepage. */
+html, body, #container-main, #content, #left-navigation-container, #footer-container {
+  background-color: #191b1d !important;
+  color: #f7f7f8 !important;
+}
+#left-navigation-container {
+  font-size: 16px !important;
+}
+#left-navigation-container a,
+#left-navigation-container button,
+#left-navigation-container span,
+#left-navigation-container div {
+  color: #e7e7e9 !important;
+}
+#left-navigation-container a {
+  padding-top: 11px !important;
+  padding-bottom: 11px !important;
+}
+#left-navigation-container a:hover,
+#left-navigation-container button:hover {
+  background-color: #343639 !important;
+}
+#container-main {
+  min-height: calc(100vh - 50px);
+}
+/* Keep the left menu expanded and give it more room on desktop. */
+body.roblox-side-menu-open #left-navigation-container {
+  display: block !important;
+  position: relative !important;
+  float: left !important;
+  width: 270px !important;
+  min-width: 270px !important;
+  z-index: 5 !important;
+}
+body.roblox-side-menu-open #container-main,
+body.roblox-side-menu-open #footer-container {
+  margin-left: 270px !important;
+  width: calc(100% - 270px) !important;
+}
+@media (max-width: 767px) {
+  body.roblox-side-menu-open #left-navigation-container {
+    float: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  body.roblox-side-menu-open #container-main,
+  body.roblox-side-menu-open #footer-container {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
+</style>
+<script>
+/* Start with the menu open and keep it open when the three-line button is pressed. */
+(function () {
+  function keepMenuOpen() {
+    document.body.classList.add("roblox-side-menu-open");
+    var menu = document.getElementById("left-navigation-container");
+    if (menu) {
+      menu.style.display = "block";
+      menu.setAttribute("aria-expanded", "true");
+    }
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", keepMenuOpen);
+  } else {
+    keepMenuOpen();
+  }
+  document.addEventListener("click", function (event) {
+    var button = event.target && event.target.closest
+      ? event.target.closest("#header-menu-icon .menu-button, #header-menu-icon button, #header-menu-icon a")
+      : null;
+    if (button) {
+      window.setTimeout(keepMenuOpen, 0);
+      window.setTimeout(keepMenuOpen, 100);
+    }
+  }, true);
+})();
+</script>
+
 </body>
 </html>
