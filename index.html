@@ -969,5 +969,113 @@ body.roblox-side-menu-open #footer-container {
 })();
 </script>
 
+
+<style id="fakeroblox-full-dark-theme">
+/* Consistent Roblox-inspired dark theme for the whole homepage. */
+:root { color-scheme: dark; }
+html, body { background:#191b1d !important; color:#f7f7f8 !important; }
+#header, #header-container, #navigation-container, #navbar, #left-navigation-container,
+#container-main, #content, #content-container, #footer-container,
+.container-main, .content, .section, .section-content, .catalog-page,
+#catalog-react-container, .rbx-header, .rbx-navbar, .rbx-left-col {
+  background-color:#191b1d !important;
+  color:#f7f7f8 !important;
+}
+#header-container, #navigation-container, .rbx-header, .rbx-navbar {
+  border-color:#303236 !important;
+}
+#container-main a, #content a, #left-navigation-container a,
+#header-container a, #navigation-container a {
+  color:#e7e7e9 !important;
+}
+#container-main a:hover, #content a:hover, #left-navigation-container a:hover,
+#header-container a:hover, #navigation-container a:hover {
+  color:#fff !important;
+}
+#left-navigation-container {
+  font-size:16px !important;
+  background:#191b1d !important;
+}
+#left-navigation-container a, #left-navigation-container button {
+  min-height:40px !important;
+  padding-top:10px !important;
+  padding-bottom:10px !important;
+  border-radius:7px !important;
+}
+#left-navigation-container a:hover, #left-navigation-container button:hover {
+  background:#343639 !important;
+}
+#container-main input, #container-main select, #container-main textarea,
+#content input, #content select, #content textarea {
+  background:#25272a !important;
+  color:#f7f7f8 !important;
+  border-color:#45474a !important;
+}
+#container-main button, #content button {
+  border-color:#45474a;
+}
+#container-main [style*="background-color: white"],
+#container-main [style*="background-color: rgb(255"],
+#content [style*="background-color: white"],
+#content [style*="background-color: rgb(255"] {
+  background-color:#232527 !important;
+  color:#f7f7f8 !important;
+}
+@media (min-width:768px) {
+  body.roblox-side-menu-open #left-navigation-container {
+    display:block !important; position:relative !important; float:left !important;
+    width:270px !important; min-width:270px !important; z-index:5 !important;
+  }
+  body.roblox-side-menu-open #container-main,
+  body.roblox-side-menu-open #footer-container {
+    margin-left:270px !important; width:calc(100% - 270px) !important;
+  }
+}
+@media (max-width:767px) {
+  body.roblox-side-menu-open #left-navigation-container {
+    display:block !important; position:relative !important; float:none !important;
+    width:100% !important; min-width:0 !important;
+  }
+  body.roblox-side-menu-open #container-main,
+  body.roblox-side-menu-open #footer-container {
+    margin-left:0 !important; width:100% !important;
+  }
+}
+</style>
+<script id="fakeroblox-persist-menu-open">
+(function () {
+  function forceOpen() {
+    document.body.classList.add("roblox-side-menu-open");
+    var menu = document.getElementById("left-navigation-container");
+    if (menu) {
+      menu.style.setProperty("display", "block", "important");
+      menu.setAttribute("aria-expanded", "true");
+    }
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", forceOpen);
+  } else {
+    forceOpen();
+  }
+  document.addEventListener("click", function (event) {
+    var button = event.target && event.target.closest
+      ? event.target.closest("#header-menu-icon, #header-menu-icon .menu-button, #header-menu-icon button, #header-menu-icon a")
+      : null;
+    if (button) {
+      setTimeout(forceOpen, 0);
+      setTimeout(forceOpen, 100);
+      setTimeout(forceOpen, 250);
+    }
+  }, true);
+  var observer = new MutationObserver(forceOpen);
+  function watchMenu() {
+    var menu = document.getElementById("left-navigation-container");
+    if (menu) observer.observe(menu, {childList:true, subtree:true});
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", watchMenu);
+  else watchMenu();
+})();
+</script>
+
 </body>
 </html>
