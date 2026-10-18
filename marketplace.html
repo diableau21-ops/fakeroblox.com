@@ -21,6 +21,41 @@ main{min-width:0;padding:25px 30px 60px;max-width:1600px;width:100%;margin:0 aut
 @media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.shell{grid-template-columns:66px minmax(0,1fr)}.sidebar{padding:14px 7px}.side-link{justify-content:center;padding:11px 5px}.side-link .label,.sidebar-label,.side-divider{display:none}.side-link .ico{font-size:20px}.nav{display:none}.global-search{width:auto;flex:1}.top-actions{gap:7px}}
 @media(max-width:600px){.top{height:auto;min-height:56px;padding:10px 12px;gap:12px;flex-wrap:wrap}.brand{font-size:21px}.global-search{order:3;flex-basis:100%;width:100%}.top-actions{margin-left:auto}.top-actions .top-icon:nth-child(2){display:none}.shell{grid-template-columns:1fr}.sidebar{display:flex;gap:4px;overflow-x:auto;border-right:0;border-bottom:1px solid #303236;padding:8px}.side-link{flex:0 0 auto;margin:0;padding:8px 10px}.side-link .label{display:inline;font-size:12px}.side-link .ico{font-size:16px;width:auto}main{padding:20px 12px 40px}.page-head{align-items:flex-start}h1{font-size:27px}.head-actions .round-btn{font-size:12px;padding:0 8px}.filters{gap:7px}.filter{min-width:calc(50% - 5px);max-width:none}.filter.check{min-width:unset}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.thumb{aspect-ratio:1}.emoji{font-size:62px}.card-info{padding:9px}.item-name{font-size:13px}.modal{grid-template-columns:1fr;gap:15px;padding:16px}.modal-image{max-height:260px}.modal h2{font-size:22px}.modal-close{background:#232527;border-radius:50%;z-index:1}}
 
+
+/* Catalog styling tuned to the Roblox desktop Marketplace, especially when embedded on home. */
+body.embed-mode .page-head{margin:0 0 18px;justify-content:flex-start}
+body.embed-mode h1{font-size:24px;font-weight:700;letter-spacing:0;margin:0}
+body.embed-mode .head-actions{display:none}
+body.embed-mode .catalog-search{gap:8px;margin-bottom:14px}
+body.embed-mode .catalog-search input{height:40px;border-radius:8px;background:#393b3e;border:1px solid #393b3e;padding:0 14px}
+body.embed-mode .search-btn{width:42px;min-width:42px;padding:0;font-size:0;background:#393b3e;border:1px solid #505257;position:relative}
+body.embed-mode .search-btn:after{content:"⌕";font-size:25px;line-height:1;position:absolute;inset:4px 0 0}
+body.embed-mode .filters{gap:8px;margin-bottom:14px}
+body.embed-mode .filter{height:36px;min-width:125px;border-radius:8px;background:#393b3e;border-color:#393b3e;color:#f7f7f8}
+body.embed-mode .filter.check{background:transparent;border-color:transparent;padding-left:2px}
+body.embed-mode .chips{gap:8px;padding:2px 0 13px;margin-bottom:3px}
+body.embed-mode .chip{background:#393b3e;border-color:#393b3e;border-radius:18px;padding:8px 13px;color:#f7f7f8;font-weight:600}
+body.embed-mode .chip.active{background:#f7f7f8;border-color:#f7f7f8;color:#191b1d}
+body.embed-mode .result-row{margin:2px 0 12px;color:#bdbfc2}
+body.embed-mode .result-row span:last-child{display:none}
+body.embed-mode .grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:18px 14px}
+body.embed-mode .card{border:0;border-radius:0;background:transparent;box-shadow:none;text-align:left}
+body.embed-mode .card:hover{transform:none;border-color:transparent}
+body.embed-mode .thumb{border-radius:8px;background:#393b3e;aspect-ratio:1/1}
+body.embed-mode .thumb img{object-fit:contain;padding:0}
+body.embed-mode .emoji{font-size:clamp(42px,5vw,68px)}
+body.embed-mode .item-label{display:none}
+body.embed-mode .card-info{padding:9px 2px 3px}
+body.embed-mode .item-name{font-size:14px;font-weight:600;margin-bottom:4px;color:#f7f7f8}
+body.embed-mode .creator{font-size:12px;margin-bottom:6px;color:#bdbfc2}
+body.embed-mode .price-line{font-size:14px;font-weight:600;gap:6px;color:#f7f7f8}
+body.embed-mode .robux{width:16px;height:16px;font-size:9px;flex-shrink:0}
+body.embed-mode .disclaimer{display:none}
+@media(max-width:1250px){body.embed-mode .grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:1000px){body.embed-mode .grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:700px){body.embed-mode .grid{grid-template-columns:repeat(3,minmax(0,1fr))}body.embed-mode main{padding:16px 12px 30px}}
+@media(max-width:480px){body.embed-mode .grid{grid-template-columns:repeat(2,minmax(0,1fr))}body.embed-mode .filter{min-width:calc(50% - 8px);max-width:none}body.embed-mode .filter.check{min-width:unset}}
+
 /* Embedded mode: show only the catalog inside the existing homepage shell. */
 body.embed-mode .top,body.embed-mode .sidebar{display:none!important}
 body.embed-mode .shell{display:block;min-height:0}
