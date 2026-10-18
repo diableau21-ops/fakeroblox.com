@@ -1,86 +1,128 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#191b1d">
-<title>Headless Horseman - Marketplace | FakeRoblox</title>
+<title>Marketplace | FakeRoblox</title>
 <style>
-:root{color-scheme:dark;--bg:#191b1d;--panel:#232527;--panel2:#2b2d30;--line:#3b3d40;--text:#f7f7f8;--muted:#bdbfc2;--blue:#335fff;--green:#00b06f}
-*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg);color:var(--text);font:15px Arial,Helvetica,sans-serif}
-a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
-.top{height:56px;background:#111214;border-bottom:1px solid #303236;display:flex;align-items:center;gap:26px;padding:0 24px;position:sticky;top:0;z-index:5}
-.brand{font-size:22px;font-weight:900;letter-spacing:-.8px;white-space:nowrap}.brand span{color:#bfc9ff}
-.nav{display:flex;align-items:center;gap:24px;color:#e6e6e7;font-weight:600}.nav a:hover{color:#fff}
-.search{margin-left:auto;width:min(360px,30vw);position:relative}.search input{width:100%;height:36px;border:1px solid #45474a;border-radius:8px;background:#25272a;color:#fff;padding:0 14px;outline:none}.search input:focus{border-color:#8b9bff}
-.login{border:0;border-radius:8px;background:#335fff;color:#fff;padding:10px 17px;font-weight:700;white-space:nowrap}
-.page{max-width:1160px;margin:0 auto;padding:26px 24px 64px}.crumb{font-size:13px;color:#b8bbc0;margin:0 0 22px}.crumb a:hover{text-decoration:underline;color:#fff}
-.layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:30px;align-items:start}
-.preview{min-width:0}.hero{height:430px;background:#25272a;border:1px solid #3a3c40;border-radius:10px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 43%,#44474b 0,#2b2d30 38%,#222427 75%)}
-.hero img{position:relative;width:100%;height:100%;object-fit:contain;z-index:1}.hero-fallback{position:absolute;z-index:0;text-align:center;color:#bfc1c4}.horseman{font-size:92px;line-height:1.1;filter:drop-shadow(0 12px 12px #111)}.fallback-caption{font-size:12px;color:#a8aaad;margin-top:8px}
-.preview-note{font-size:12px;color:#92969c;margin:12px 2px 0}
-.details{padding:2px 0}.tag{display:inline-flex;align-items:center;gap:6px;border:1px solid #505256;border-radius:5px;padding:5px 8px;color:#d6d7d9;font-size:12px;font-weight:700;margin-bottom:12px}
-h1{font-size:30px;line-height:1.15;letter-spacing:-.5px;margin:0 0 10px;font-weight:750}.creator{font-size:14px;color:#bfc1c5;margin-bottom:20px}.creator a{color:#fff;text-decoration:underline}
-.stats{display:flex;gap:22px;flex-wrap:wrap;color:#c6c8cb;font-size:13px;border-bottom:1px solid var(--line);padding:0 0 18px;margin-bottom:20px}.stats strong{color:#fff;margin-right:5px}
-.price-label{font-size:13px;color:#c2c4c7;margin-bottom:6px}.price-row{display:flex;align-items:center;gap:9px;font-size:25px;font-weight:800;margin-bottom:16px}.robux{display:inline-flex;align-items:center;justify-content:center;background:#00b06f;color:#fff;font-size:16px;font-weight:900;width:25px;height:25px;border-radius:50%;font-style:italic}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}.buy{border:0;background:#335fff;color:#fff;border-radius:8px;min-height:44px;font-weight:750}.owned{border:1px solid #66696e;background:#343639;color:#f5f5f5;border-radius:8px;min-height:44px;font-weight:700}.try{width:100%;min-height:42px;border:1px solid #66696e;background:transparent;color:#fff;border-radius:8px;font-weight:700}.buy:hover{background:#456dff}.owned:hover,.try:hover{background:#303236}
-.notice{background:#25272a;border:1px solid #3b3d40;border-radius:8px;padding:12px 14px;color:#c5c7ca;font-size:12px;line-height:1.5;margin:18px 0 22px}
-.section{border-top:1px solid var(--line);padding-top:18px;margin-top:20px}.section h2{font-size:17px;margin:0 0 12px}.description{font-size:14px;line-height:1.6;color:#d2d3d5}.included{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.included div{border:1px solid #3c3e42;background:#242629;border-radius:7px;padding:12px 8px;text-align:center;color:#c7c9cc;font-size:12px}.mini-icon{height:48px;border-radius:6px;background:#34363a;display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:8px}
-footer{border-top:1px solid #303236;padding:22px 24px;color:#999da3;font-size:12px;text-align:center}
-.toast{display:none;margin-top:10px;border-radius:7px;background:#253c32;border:1px solid #367653;color:#d9ffeb;padding:10px 12px;font-size:13px}.toast.show{display:block}
-@media(max-width:800px){.top{gap:14px;padding:0 14px}.nav{gap:12px;font-size:13px}.search{width:190px}.page{padding:20px 15px 45px}.layout{grid-template-columns:1fr;gap:25px}.hero{height:min(75vw,420px)}.details{padding:0 2px}}
-@media(max-width:560px){.top{height:auto;min-height:56px;flex-wrap:wrap;padding:10px 12px;gap:12px}.brand{font-size:20px}.nav{order:3;width:100%;justify-content:space-between}.search{width:auto;flex:1}.login{padding:9px 12px}.page{padding-top:16px}.hero{height:320px}h1{font-size:26px}.layout{display:flex;flex-direction:column}.preview,.details{width:100%}}
+:root{color-scheme:dark;--bg:#191b1d;--bar:#111214;--panel:#232527;--panel2:#2b2d30;--line:#3b3d40;--text:#f7f7f8;--muted:#bdbfc2;--blue:#335fff;--green:#00b06f}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font:14px Arial,Helvetica,sans-serif}body{min-height:100vh}a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}
+.top{height:56px;background:var(--bar);border-bottom:1px solid #303236;display:flex;align-items:center;gap:24px;padding:0 22px;position:sticky;top:0;z-index:20}
+.brand{font-size:23px;font-weight:900;letter-spacing:-1px;white-space:nowrap}.brand span{color:#c7d0ff}.nav{display:flex;align-items:center;gap:24px;font-weight:600;white-space:nowrap}.nav a{color:#e6e6e7}.nav a:hover,.nav a.active{color:#fff}.global-search{margin-left:auto;width:min(320px,27vw);position:relative}.global-search input{height:36px;width:100%;border:1px solid #45474a;border-radius:8px;background:#25272a;color:#fff;padding:0 13px;outline:none}.global-search input:focus,.filter input:focus{border-color:#8496ff}.top-actions{display:flex;align-items:center;gap:15px;color:#eee;white-space:nowrap}.top-icon{border:0;background:transparent;color:#eee;font-size:19px;padding:5px}.login{border:0;border-radius:7px;background:var(--blue);color:#fff;padding:10px 16px;font-weight:700}
+.shell{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:calc(100vh - 56px)}.sidebar{border-right:1px solid #303236;padding:17px 12px 24px;background:var(--bg)}.side-link{display:flex;align-items:center;gap:13px;padding:10px 12px;border-radius:7px;color:#e2e3e5;margin-bottom:3px;font-size:14px}.side-link .ico{width:20px;text-align:center;font-size:17px;color:#c5c7ca}.side-link:hover,.side-link.active{background:#343639;color:#fff}.side-divider{height:1px;background:#343639;margin:12px 8px}.sidebar-label{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#85898f;padding:10px 12px 7px}
+main{min-width:0;padding:25px 30px 60px;max-width:1600px;width:100%;margin:0 auto}.page-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}h1{font-size:30px;letter-spacing:-.5px;margin:0;font-weight:750}.head-actions{display:flex;gap:9px;align-items:center}.round-btn{height:36px;padding:0 12px;border:1px solid #484a4e;background:#25272a;color:#f2f2f2;border-radius:7px}
+.catalog-search{display:flex;gap:10px;margin-bottom:14px}.catalog-search input{height:42px;flex:1;min-width:100px;border:1px solid #47494d;border-radius:7px;background:#25272a;color:#fff;padding:0 14px;outline:none}.search-btn{background:#335fff;border:0;color:#fff;border-radius:7px;padding:0 20px;font-weight:700}
+.filters{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:17px}.filter{height:38px;min-width:130px;max-width:190px;flex:1;border:1px solid #45474a;border-radius:7px;background:#25272a;color:#f4f4f5;padding:0 10px;outline:none}.filter option{background:#25272a}.filter.check{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:0 12px;min-width:unset}.filter.check input{accent-color:#335fff}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:1px 0 14px;margin-bottom:5px;scrollbar-width:thin}.chip{border:1px solid #44464a;border-radius:18px;background:#25272a;color:#ddd;padding:8px 14px;white-space:nowrap}.chip:hover,.chip.active{background:#f1f1f1;color:#222;border-color:#f1f1f1}
+.result-row{display:flex;align-items:center;justify-content:space-between;color:#b9bbc0;font-size:13px;margin:3px 0 14px}.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:15px}.card{min-width:0;cursor:pointer;border-radius:9px;overflow:hidden;background:#232527;border:1px solid #2e3033;transition:transform .14s,border-color .14s}.card:hover{transform:translateY(-2px);border-color:#5c5f65}.thumb{height:auto;aspect-ratio:1/1;background:#2b2d30;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover}.emoji{font-size:74px;filter:drop-shadow(0 7px 6px #111)}.item-label{position:absolute;left:8px;top:8px;border-radius:4px;background:#161719d9;color:#ddd;padding:4px 6px;font-size:10px;text-transform:uppercase;letter-spacing:.3px}.card-info{padding:10px 11px 12px}.item-name{font-size:14px;font-weight:700;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:5px}.creator{font-size:12px;color:#aeb1b6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:10px}.price-line{display:flex;align-items:center;gap:6px;font-weight:750}.robux{width:17px;height:17px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:#00b06f;color:white;font-size:10px;font-weight:900;font-style:italic}.empty{padding:60px 15px;text-align:center;color:#bfc1c4;grid-column:1/-1}.empty h2{color:#fff;font-size:20px}.disclaimer{font-size:11px;color:#85898f;margin-top:30px;border-top:1px solid #333538;padding-top:16px}
+.error-state{position:fixed;inset:0;z-index:50;background:#fff;color:#333;display:none;align-items:center;justify-content:center;font:16px Arial,sans-serif;text-align:center;padding:24px}.error-state.visible{display:flex}.error-inner{max-width:460px}.error-inner h2{font-size:21px;font-weight:500;margin:0 0 12px}.error-inner p{color:#666;line-height:1.5}
+.modal-backdrop{position:fixed;inset:0;background:#000b;z-index:40;display:none;align-items:center;justify-content:center;padding:20px}.modal-backdrop.open{display:flex}.modal{background:#232527;border:1px solid #414348;border-radius:12px;width:min(760px,100%);max-height:90vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:22px;position:relative}.modal-image{aspect-ratio:1;background:#2b2d30;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}.modal-image img{width:100%;height:100%;object-fit:contain}.modal-image .emoji{font-size:110px}.modal h2{font-size:25px;margin:8px 0}.modal .description{color:#c2c4c8;line-height:1.6;margin:16px 0}.modal-close{position:absolute;right:12px;top:10px;border:0;background:transparent;color:#eee;font-size:26px}.modal-price{font-size:24px;font-weight:800;display:flex;align-items:center;gap:8px;margin:22px 0}.modal-actions{display:flex;gap:9px}.primary,.secondary{flex:1;min-height:42px;border-radius:7px;font-weight:700}.primary{border:0;background:#335fff;color:white}.secondary{border:1px solid #5a5d61;background:#343639;color:#fff}.toast{position:fixed;z-index:60;bottom:20px;left:50%;transform:translateX(-50%);background:#292b2e;border:1px solid #55585d;color:white;border-radius:8px;padding:12px 17px;display:none;max-width:90vw}.toast.show{display:block}
+@media(max-width:1200px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.shell{grid-template-columns:200px minmax(0,1fr)}main{padding:24px 22px}.nav{gap:15px}.top{gap:18px}}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.shell{grid-template-columns:66px minmax(0,1fr)}.sidebar{padding:14px 7px}.side-link{justify-content:center;padding:11px 5px}.side-link .label,.sidebar-label,.side-divider{display:none}.side-link .ico{font-size:20px}.nav{display:none}.global-search{width:auto;flex:1}.top-actions{gap:7px}}
+@media(max-width:600px){.top{height:auto;min-height:56px;padding:10px 12px;gap:12px;flex-wrap:wrap}.brand{font-size:21px}.global-search{order:3;flex-basis:100%;width:100%}.top-actions{margin-left:auto}.top-actions .top-icon:nth-child(2){display:none}.shell{grid-template-columns:1fr}.sidebar{display:flex;gap:4px;overflow-x:auto;border-right:0;border-bottom:1px solid #303236;padding:8px}.side-link{flex:0 0 auto;margin:0;padding:8px 10px}.side-link .label{display:inline;font-size:12px}.side-link .ico{font-size:16px;width:auto}main{padding:20px 12px 40px}.page-head{align-items:flex-start}h1{font-size:27px}.head-actions .round-btn{font-size:12px;padding:0 8px}.filters{gap:7px}.filter{min-width:calc(50% - 5px);max-width:none}.filter.check{min-width:unset}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.thumb{aspect-ratio:1}.emoji{font-size:62px}.card-info{padding:9px}.item-name{font-size:13px}.modal{grid-template-columns:1fr;gap:15px;padding:16px}.modal-image{max-height:260px}.modal h2{font-size:22px}.modal-close{background:#232527;border-radius:50%;z-index:1}}
 </style>
 </head>
 <body>
 <header class="top">
-<a class="brand" href="index.html">Fake<span>Roblox</span></a>
-<nav class="nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="marketplace.html">Marketplace</a><a href="marketplace.html">Avatar Shop</a></nav>
-<form class="search" id="searchForm"><input id="searchInput" placeholder="Search Marketplace" aria-label="Search Marketplace"></form>
-<button class="login" id="loginButton">Log In</button>
+<a class="brand" href="index.html" aria-label="FakeRoblox home">Fake<span>Roblox</span></a>
+<nav class="nav" aria-label="Main navigation"><a href="index.html">Charts</a><a class="active" href="marketplace.html">Marketplace</a><a href="#" data-action="create">Create</a><a href="#" data-action="robux">Robux</a></nav>
+<form class="global-search" id="globalForm"><input id="globalInput" placeholder="Search" aria-label="Search"></form>
+<div class="top-actions"><button class="top-icon" aria-label="Notifications" data-action="notifications">♧</button><button class="top-icon" aria-label="Shopping cart" id="cartButton">🛒<span id="cartCount">0</span></button><button class="top-icon" aria-label="Settings" data-action="settings">⚙</button><button class="login" id="loginButton">Log In</button></div>
 </header>
-<main class="page">
-<div class="crumb"><a href="index.html">Home</a> &nbsp;›&nbsp; <a href="marketplace.html">Marketplace</a> &nbsp;›&nbsp; Bundles</div>
-<div class="layout">
-<section class="preview">
-<div class="hero">
-<div class="hero-fallback" id="fallback"><div class="horseman">🎃</div><div class="fallback-caption">Headless Horseman</div></div>
-<img id="bundleImage" alt="Headless Horseman bundle preview" hidden>
+<div class="shell">
+<aside class="sidebar" aria-label="Sidebar">
+<a class="side-link" href="index.html"><span class="ico">⌂</span><span class="label">Home</span></a>
+<a class="side-link" href="#" data-action="profile"><span class="ico">◉</span><span class="label">Profile</span></a>
+<a class="side-link" href="#" data-action="plus"><span class="ico">✦</span><span class="label">Roblox Plus</span></a>
+<a class="side-link" href="#" data-action="messages"><span class="ico">✉</span><span class="label">Messages</span></a>
+<a class="side-link" href="#" data-action="friends"><span class="ico">♧</span><span class="label">Friends</span></a>
+<div class="side-divider"></div>
+<a class="side-link" href="marketplace.html"><span class="ico">♙</span><span class="label">Avatar</span></a>
+<a class="side-link" href="#" data-action="inventory"><span class="ico">▣</span><span class="label">Inventory</span></a>
+<a class="side-link" href="#" data-action="trade"><span class="ico">⇄</span><span class="label">Trade</span></a>
+<a class="side-link" href="#" data-action="communities"><span class="ico">♧</span><span class="label">Communities</span></a>
+<a class="side-link" href="#" data-action="news"><span class="ico">▤</span><span class="label">Newsroom</span></a>
+<div class="side-divider"></div>
+<a class="side-link" href="#" data-action="store"><span class="ico">▣</span><span class="label">Official Store</span></a>
+<a class="side-link" href="#" data-action="giftcards"><span class="ico">▧</span><span class="label">Buy Gift Cards</span></a>
+<div class="side-divider"></div><div class="sidebar-label">Discover</div>
+<a class="side-link active" href="marketplace.html"><span class="ico">▦</span><span class="label">Marketplace</span></a>
+</aside>
+<main>
+<div class="page-head"><h1>Marketplace</h1><div class="head-actions"><button class="round-btn" id="cartTop">🛒 Cart (<span id="cartCount2">0</span>)</button></div></div>
+<form class="catalog-search" id="catalogForm"><input id="catalogInput" placeholder="Search Marketplace" aria-label="Search Marketplace"><button class="search-btn" type="submit">Search</button></form>
+<div class="filters">
+<select class="filter" id="creatorFilter" aria-label="Creator"><option value="all">All Creators</option><option value="Roblox">Roblox</option><option value="Demo Studio">Demo Studio</option><option value="Avatar Lab">Avatar Lab</option></select>
+<select class="filter" id="priceFilter" aria-label="Price"><option value="all">Any Price</option><option value="free">Free</option><option value="paid">Paid</option><option value="under100">Under 100</option><option value="under1000">Under 1,000</option></select>
+<select class="filter" id="sortFilter" aria-label="Sort by"><option value="relevance">Sort by Relevance</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option><option value="name">Name: A to Z</option></select>
+<select class="filter" id="salesFilter" aria-label="Sales type"><option value="all">Sales Type: All</option><option value="on-sale">On Sale</option><option value="off-sale">Off Sale</option></select>
+<label class="filter check"><input id="unavailableFilter" type="checkbox"> Unavailable Items</label>
 </div>
-<div class="preview-note">Preview image for this demo item.</div>
-</section>
-<section class="details">
-<div class="tag">✦ &nbsp; BUNDLE</div>
-<h1>Headless Horseman</h1>
-<div class="creator">By <a href="#" id="creatorLink">Roblox</a></div>
-<div class="stats"><span><strong>★</strong> 2.7M Favorites</span><span><strong>◉</strong> Bundle</span><span><strong>✓</strong> Official-style demo</span></div>
-<div class="price-label">Price</div>
-<div class="price-row"><span class="robux">R</span><span>17,000</span></div>
-<div class="actions"><button class="buy" id="buyButton">Buy</button><button class="owned" id="ownedButton">Owned</button></div>
-<button class="try" id="tryButton">Try On</button>
-<div class="toast" id="toast" role="status"></div>
-<div class="notice">This is a fan-made demonstration page. Buttons do not make real purchases and this page is not affiliated with Roblox.</div>
-<div class="section"><h2>Description</h2><div class="description">A mysterious headless rider, ready for your avatar. Explore the bundle details in this Roblox-inspired demo marketplace.</div></div>
-<div class="section"><h2>Included Items</h2><div class="included"><div><div class="mini-icon">🎃</div>Head</div><div><div class="mini-icon">🧥</div>Torso</div><div><div class="mini-icon">🥾</div>Body Parts</div></div></div>
-</section>
-</div>
+<div class="chips" id="categories"><button class="chip active" data-category="All">All</button><button class="chip" data-category="dreads">Dreads</button><button class="chip" data-category="emotes">Emotes</button><button class="chip" data-category="face">Face</button><button class="chip" data-category="monkey">Monkey</button><button class="chip" data-category="beard">Beard</button><button class="chip" data-category="fedora">Fedora</button><button class="chip" data-category="scarf">Scarf</button><button class="chip" data-category="beanie">Beanie</button><button class="chip" data-category="sunglasses">Sunglasses</button><button class="chip" data-category="bundle">Bundles</button></div>
+<div class="result-row"><span id="resultCount">Items</span><span>Demo catalog · prices are illustrative</span></div>
+<div class="grid" id="itemGrid" aria-live="polite"></div>
+<div class="disclaimer">Fan-made visual demo, not affiliated with Roblox Corporation. Item examples and prices are illustrative. The demo cart and buttons do not make purchases or connect to a Roblox account.</div>
 </main>
-<footer>FakeRoblox is an independent fan-made demo and is not affiliated with Roblox Corporation. No real transactions are available.</footer>
+</div>
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><section class="modal"><button class="modal-close" id="modalClose" aria-label="Close">×</button><div class="modal-image" id="modalImage"></div><div><div class="item-label" style="position:static;display:inline-block" id="modalType">ITEM</div><h2 id="modalTitle">Item</h2><div class="creator" id="modalCreator"></div><div class="description" id="modalDescription"></div><div class="modal-price"><span class="robux">R</span><span id="modalPrice"></span></div><div class="modal-actions"><button class="primary" id="modalBuy">Buy</button><button class="secondary" id="modalCart">Add to Cart</button></div><p style="font-size:11px;color:#92969c;line-height:1.5">Demo only — no real purchase or account connection.</p></div></section></div>
+<div class="error-state" id="errorState"><div class="error-inner"><h2>Catalog temporarily unavailable.</h2><p>Please try again later.</p><button class="round-btn" id="retryButton">Try Again</button></div></div>
+<div class="toast" id="toast" role="status"></div>
 <script>
-const img=document.getElementById('bundleImage');
-const fallback=document.getElementById('fallback');
-fetch('https://thumbnails.roblox.com/v1/bundles/thumbnails?bundleIds=201&size=420x420&format=Png&isCircular=false')
-.then(r=>r.ok?r.json():Promise.reject()).then(data=>{const url=data&&data.data&&data.data[0]&&data.data[0].imageUrl;if(url){img.src=url;img.onload=()=>{img.hidden=false;fallback.style.display='none'};img.onerror=()=>{};}})
-.catch(()=>{});
-const toast=document.getElementById('toast');
-function message(text){toast.textContent=text;toast.classList.add('show')}
-document.getElementById('buyButton').addEventListener('click',()=>message('Demo only — no real purchase was made.'));
-document.getElementById('ownedButton').addEventListener('click',()=>message('This is a demo button; ownership is not connected to a Roblox account.'));
-document.getElementById('tryButton').addEventListener('click',()=>message('Avatar try-on is a visual demo and is not connected to your Roblox avatar.'));
-document.getElementById('loginButton').addEventListener('click',()=>message('Demo login is not available.'));
-document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();const q=document.getElementById('searchInput').value.trim();if(q)message('Search demo: '+q);});
-document.getElementById('creatorLink').addEventListener('click',e=>{e.preventDefault();message('Creator profile is not connected in this demo.')});
+const items=[
+{id:201,name:"Headless Horseman",creator:"Roblox",price:17000,category:"bundle",emoji:"🎃",label:"Bundle",description:"The classic Headless Horseman bundle. This demo card uses sample information; live availability and purchasing are not connected.",image:"",onSale:true,unavailable:false},
+{id:202,name:"Korblox Deathspeaker",creator:"Roblox",price:17000,category:"bundle",emoji:"🦴",label:"Bundle",description:"A fantasy-inspired avatar bundle shown here as a demo catalog item.",onSale:true,unavailable:false},
+{id:203,name:"Void Cube",creator:"Demo Studio",price:125,category:"face",emoji:"🟪",label:"Accessory",description:"A mysterious void-themed accessory for this demo catalog.",onSale:true,unavailable:false},
+{id:204,name:"Transparent Cloak",creator:"Avatar Lab",price:250,category:"scarf",emoji:"🧥",label:"Accessory",description:"A cloak-style avatar accessory example.",onSale:true,unavailable:false},
+{id:205,name:"Black Dreads",creator:"Avatar Lab",price:85,category:"dreads",emoji:"🖤",label:"Hair",description:"Dark dreadlock hair accessory sample.",onSale:true,unavailable:false},
+{id:206,name:"Cool Sunglasses",creator:"Demo Studio",price:50,category:"sunglasses",emoji:"🕶️",label:"Accessory",description:"A pair of sunglasses for the sample catalog.",onSale:true,unavailable:false},
+{id:207,name:"Classic Fedora",creator:"Roblox",price:150,category:"fedora",emoji:"🎩",label:"Hat",description:"A classic fedora-style hat sample.",onSale:true,unavailable:false},
+{id:208,name:"Warm Beanie",creator:"Avatar Lab",price:65,category:"beanie",emoji:"🧢",label:"Hat",description:"A simple beanie hat sample.",onSale:true,unavailable:false},
+{id:209,name:"Friendly Beard",creator:"Demo Studio",price:35,category:"beard",emoji:"🧔",label:"Face",description:"A beard accessory sample.",onSale:true,unavailable:false},
+{id:210,name:"Monkey Buddy",creator:"Avatar Lab",price:90,category:"monkey",emoji:"🐵",label:"Shoulder",description:"A playful monkey-themed sample accessory.",onSale:true,unavailable:false},
+{id:211,name:"Wave Emote",creator:"Roblox",price:80,category:"emotes",emoji:"👋",label:"Emote",description:"An emote example in the demo catalog.",onSale:true,unavailable:false},
+{id:212,name:"Classic Smile",creator:"Roblox",price:0,category:"face",emoji:"🙂",label:"Face",description:"A free face example.",onSale:true,unavailable:false},
+{id:213,name:"Unavailable Crown",creator:"Demo Studio",price:500,category:"fedora",emoji:"👑",label:"Hat",description:"An unavailable sample item. Turn on Unavailable Items to include it.",onSale:false,unavailable:true},
+{id:214,name:"Limited Scarf",creator:"Avatar Lab",price:110,category:"scarf",emoji:"🧣",label:"Accessory",description:"A scarf accessory example.",onSale:false,unavailable:true},
+{id:215,name:"Happy Emote",creator:"Demo Studio",price:0,category:"emotes",emoji:"😄",label:"Emote",description:"A free sample emote.",onSale:true,unavailable:false}
+];
+let category="All",query="",selected=null,cart=[];
+const grid=document.getElementById("itemGrid"),toast=document.getElementById("toast");
+function notify(text){toast.textContent=text;toast.classList.add("show");clearTimeout(notify.timer);notify.timer=setTimeout(()=>toast.classList.remove("show"),2600)}
+function robuxPrice(price){return price===0?"Free":price.toLocaleString("en-US")}
+function filteredItems(){
+let list=items.filter(i=>(category==="All"||i.category===category)&&(!query||(i.name+" "+i.creator+" "+i.category).toLowerCase().includes(query.toLowerCase()))&&(document.getElementById("creatorFilter").value==="all"||i.creator===document.getElementById("creatorFilter").value));
+const p=document.getElementById("priceFilter").value;
+list=list.filter(i=>p==="all"||(p==="free"&&i.price===0)||(p==="paid"&&i.price>0)||(p==="under100"&&i.price>0&&i.price<100)||(p==="under1000"&&i.price>0&&i.price<1000));
+const sale=document.getElementById("salesFilter").value;
+list=list.filter(i=>(sale==="all"||(sale==="on-sale"&&i.onSale)||(sale==="off-sale"&&!i.onSale))&&(document.getElementById("unavailableFilter").checked||!i.unavailable));
+const sort=document.getElementById("sortFilter").value;
+if(sort==="low")list.sort((a,b)=>a.price-b.price);if(sort==="high")list.sort((a,b)=>b.price-a.price);if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
+return list}
+function draw(){
+const list=filteredItems();document.getElementById("resultCount").textContent=list.length+" items";
+grid.innerHTML="";
+if(!list.length){grid.innerHTML='<div class="empty"><h2>No items found</h2><p>Try changing your search or filters.</p></div>';return}
+list.forEach(item=>{const card=document.createElement("button");card.className="card";card.type="button";card.setAttribute("aria-label","View "+item.name);card.innerHTML='<div class="thumb"><span class="emoji" aria-hidden="true">'+item.emoji+'</span><span class="item-label">'+(item.unavailable?"Unavailable":item.label)+'</span></div><div class="card-info"><div class="item-name"></div><div class="creator"></div><div class="price-line"><span class="robux">R</span><span>'+robuxPrice(item.price)+'</span></div></div>';card.querySelector(".item-name").textContent=item.name;card.querySelector(".creator").textContent="By "+item.creator;card.addEventListener("click",()=>openItem(item));grid.appendChild(card)});
+}
+function openItem(item){selected=item;document.getElementById("modalTitle").textContent=item.name;document.getElementById("modalCreator").textContent="By "+item.creator;document.getElementById("modalDescription").textContent=item.description;document.getElementById("modalPrice").textContent=robuxPrice(item.price);document.getElementById("modalType").textContent=item.label;document.getElementById("modalImage").innerHTML='<span class="emoji">'+item.emoji+'</span>';document.getElementById("modalBackdrop").classList.add("open")}
+function closeModal(){document.getElementById("modalBackdrop").classList.remove("open")}
+function updateCart(){document.getElementById("cartCount").textContent=cart.length;document.getElementById("cartCount2").textContent=cart.length}
+function addCart(item){if(cart.some(x=>x.id===item.id)){notify(item.name+" is already in your demo cart.");return}cart.push(item);updateCart();notify(item.name+" added to demo cart.")}
+function searchNow(value){query=value.trim();draw()}
+document.getElementById("catalogForm").addEventListener("submit",e=>{e.preventDefault();searchNow(document.getElementById("catalogInput").value)});
+document.getElementById("globalForm").addEventListener("submit",e=>{e.preventDefault();const v=document.getElementById("globalInput").value;document.getElementById("catalogInput").value=v;searchNow(v);document.querySelector("main").scrollIntoView({behavior:"smooth"})});
+["creatorFilter","priceFilter","sortFilter","salesFilter","unavailableFilter"].forEach(id=>document.getElementById(id).addEventListener("change",draw));
+document.getElementById("categories").addEventListener("click",e=>{const b=e.target.closest("button[data-category]");if(!b)return;category=b.dataset.category;document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("active",x===b));draw()});
+document.getElementById("modalClose").addEventListener("click",closeModal);document.getElementById("modalBackdrop").addEventListener("click",e=>{if(e.target.id==="modalBackdrop")closeModal()});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+document.getElementById("modalBuy").addEventListener("click",()=>notify("Demo only — no real purchase was made."));document.getElementById("modalCart").addEventListener("click",()=>selected&&addCart(selected));
+function showCart(){if(!cart.length){notify("Your demo cart is empty.");return}notify("Demo cart: "+cart.map(x=>x.name).join(", "))}
+document.getElementById("cartButton").addEventListener("click",showCart);document.getElementById("cartTop").addEventListener("click",showCart);
+document.getElementById("loginButton").addEventListener("click",()=>notify("Demo login is not connected to Roblox."));
+document.querySelectorAll("[data-action]").forEach(el=>el.addEventListener("click",e=>{e.preventDefault();notify(el.dataset.action==="robux"?"Robux is not connected in this demo.":el.dataset.action==="create"?"Creation tools are not connected in this demo.":"This section is a visual demo and is not connected to a Roblox account.")}));
+document.getElementById("retryButton").addEventListener("click",()=>document.getElementById("errorState").classList.remove("visible"));
+/* Set window.DEMO_CATALOG_ERROR = true in dev tools to preview the separate light error state. */
+if(window.DEMO_CATALOG_ERROR===true)document.getElementById("errorState").classList.add("visible");
+draw();
 </script>
 </body>
 </html>
