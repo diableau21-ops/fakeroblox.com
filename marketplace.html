@@ -125,7 +125,7 @@ body.embed-mode .disclaimer{margin-top:20px}
 <div class="toast" id="toast" role="status"></div>
 <script>
 if(new URLSearchParams(window.location.search).get("embed")==="1")document.body.classList.add("embed-mode");
-const items=[];
+const items=[{id:"bundle-201",name:"Headless Horseman",creator:"Roblox",category:"Bundles",price:17000,emoji:"🎃",label:"Bundle",description:"Headless Horseman bundle — visual demo item. No real purchase is available.",onSale:true,unavailable:false,image:""}];
 let category="All",query="",selected=null,cart=[];
 const grid=document.getElementById("itemGrid"),toast=document.getElementById("toast");
 function notify(text){toast.textContent=text;toast.classList.add("show");clearTimeout(notify.timer);notify.timer=setTimeout(()=>toast.classList.remove("show"),2600)}
@@ -166,7 +166,7 @@ document.getElementById("retryButton").addEventListener("click",()=>document.get
 if(window.DEMO_CATALOG_ERROR===true)document.getElementById("errorState").classList.add("visible");
 draw();
 /* Load the official public thumbnail for bundle 201 when Roblox thumbnail service is available. */
-fetch("https://thumbnails.roblox.com/v1/bundles/thumbnails?bundleIds=201&size=420x420&format=Png&isCircular=false").then(r=>r.ok?r.json():Promise.reject()).then(d=>{const url=d&&d.data&&d.data[0]&&d.data[0].imageUrl;if(url){items[0].image=url;draw()}}).catch(()=>{});
+fetch("https://thumbnails.roblox.com/v1/bundles/thumbnails?bundleIds=201&size=420x420&format=Png&isCircular=false").then(r=>r.ok?r.json():Promise.reject()).then(d=>{const url=d&&d.data&&d.data[0]&&d.data[0].imageUrl;if(url){const item=items.find(x=>x.id==="bundle-201");if(item){item.image=url;draw()}}}).catch(()=>{});
 </script>
 </body>
 </html>
